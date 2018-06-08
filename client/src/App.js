@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import Footer from './components/footer';
 import './styles/css/App.css';
 
 class App extends Component {
   render() {
     return (
-      <h1>
-        Find your future favorite band.
-      </h1>
+      <div>
+        <Footer />
+      </div>
     );
   }
 }
