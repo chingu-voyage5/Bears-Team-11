@@ -1,2 +1,7 @@
-h1 {
-  color: blue; }
+html {
+  height: 100%;
+  width: 100%; }
+  html body {
+    margin: 0px; }
+
+/*# sourceMappingURL=App.css.map */
