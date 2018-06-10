@@ -1,8 +1,4 @@
-@mixin center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+@import "utilities";
 
 .navbar {
     background-color: #4285F4;

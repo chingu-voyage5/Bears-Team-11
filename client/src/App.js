@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import TripFormContainer from './components/TripFormContainer';
+import TripForm from './components/TripForm';
+
 import './styles/css/App.css';
 
 class App extends Component {
   render() {
     return (
-      <Navbar />
+      <div>
+        <Navbar />
+        <Hero />
+        <TripFormContainer>
+          <TripForm />
+        </TripFormContainer>
+      </div>
     );
   }
 }
