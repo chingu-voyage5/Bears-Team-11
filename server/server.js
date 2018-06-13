@@ -1,8 +1,10 @@
 const express = require('express'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
+    { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
     port = process.env.PORT || 5000,
-    app = express();
+    app = express(),
+    schema = require('./schema');
 
 require('dotenv').config();
 
@@ -17,6 +19,15 @@ app.get('/', (req, res) => {
   res.end();
 })
 
+app.use('/graphql',
+  bodyParser.json(),
+  graphqlExpress({ schema })
+);
+
+app.use('/graphiql',
+  graphiqlExpress({ endpointURL: '/graphql' })
+);
+
 app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+  console.log('Go to http://localhost:5000/graphiql to run queries!');
 })
