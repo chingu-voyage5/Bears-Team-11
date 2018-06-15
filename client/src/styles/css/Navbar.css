@@ -1,0 +1,24 @@
+.navbar {
+  background-color: #4285F4;
+  padding: 5px 10px;
+  padding-left: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .navbar .navbar-brand {
+    display: inline; }
+    .navbar .navbar-brand a {
+      text-decoration: none;
+      color: white; }
+    .navbar .navbar-brand h3 {
+      font-family: 'Raleway';
+      font-size: 25px;
+      margin: 0px;
+      padding: 0px;
+      padding-left: 3px; }
+  .navbar a {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+
+/*# sourceMappingURL=Navbar.css.map */
