@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import TripForm from './components/TripForm';
 
 import './styles/css/App.css';
+import 'react-dates/initialize';
 
 class App extends Component {
   render() {
