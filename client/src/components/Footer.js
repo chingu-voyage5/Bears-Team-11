@@ -13,7 +13,7 @@ const footer = () => {
             </a>
           </div>
           <div className='column has-text-centered'>
-            <p className='content'><i class="far fa-copyright"></i> Bears 11</p>
+            <p className='content'><i className="far fa-copyright"></i> Bears 11</p>
           </div>
           <div className='column has-text-centered'>
             <a className='content' href='https://medium.com/chingu'>
