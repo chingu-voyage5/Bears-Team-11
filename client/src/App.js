@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles/css/App.css';
 
+
 class App extends Component {
   constructor() {
     super();
@@ -20,6 +21,15 @@ class App extends Component {
     }
     return hashParams;
   }
+  componentWillMount() {
+    let test = String(window.location.href).split('&')
+    test.splice(0, 1)
+    if (test.length > 1) {
+      const accessToken = test[0].split('=')[1]
+      const refreshToken = test[1].split('=')[1]
+    }
+    console.log(process.env)
+  }
   render() {
     return (
       <div>
@@ -28,7 +38,7 @@ class App extends Component {
             method: 'get',
             credentials: 'include'
           }).then(res => res.json()).then(res => {
-            window.open(res.url)
+            window.location.href = res.url
           })
         }}>
           <button>test button</button>
