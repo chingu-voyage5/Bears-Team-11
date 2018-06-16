@@ -18,7 +18,6 @@ const typeDefs = `
     event_url: String!
     performer: ArtistType
     title: String!
-    spotify: [SpotifyType]
     venue_address: String!
     venue_name: String!
     venue_url: String!
@@ -27,17 +26,18 @@ const typeDefs = `
   type ArtistType {
     performer_name: String
     performer_url: String
+    spotify: SpotifyType
   }
 
   type SpotifyType {
-    id: String!
+    id: String
     tracks: [TrackType]
   }
 
   type TrackType {
-    name: String!
-    preview_url: String!
-    track_id: String!
+    name: String
+    preview_url: String
+    track_id: String
   }
 `;
 
