@@ -4,9 +4,18 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import './styles/css/index.css';
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+
+const client = new ApolloClient({
+  uri: "http://localhost:5000/graphql"
+});
 
 ReactDOM.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>, document.getElementById('root'));
+  <ApolloProvider client={client}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ApolloProvider>
+  , document.getElementById('root'));
 registerServiceWorker();

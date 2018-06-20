@@ -4,6 +4,7 @@ const express = require('express'),
     { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
     port = process.env.PORT || 5000,
     app = express(),
+    cors = require('cors'),
     schema = require('./schema');
 
 require('dotenv').config();
@@ -14,6 +15,7 @@ mongoose.connect(process.env.MLAB_URI, (err) => {
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cors())
 
 app.get('/', (req, res) => {  
   res.end();
