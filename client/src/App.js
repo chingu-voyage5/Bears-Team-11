@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import Footer from './components/Footer';
+import TripForm from './components/TripForm';
+
 import './styles/css/App.css';
+import 'react-dates/initialize';
 
 
 class App extends Component {
@@ -33,16 +39,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <a href="/#" onClick={e => {
-          fetch('/login', {
-            method: 'get',
-            credentials: 'include'
-          }).then(res => res.json()).then(res => {
-            window.location.href = res.url
-          })
-        }}>
-          <button>test button</button>
-        </a>
+        <Navbar />
+        <Hero />
+        <TripForm />
+        <Footer />
       </div>
     );
   }
