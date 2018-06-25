@@ -1,5 +1,6 @@
 const router = require('express').Router();
-      scope = ['user-read-private', 'user-read-email'];
+      scope = ['user-read-private', 'user-read-email'],
+      passport = require('passport');
 
 require('../lib/passport')(passport);
 require('dotenv').config();
