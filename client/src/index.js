@@ -5,10 +5,34 @@ import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 import './styles/css/index.css';
 import ApolloClient from "apollo-boost";
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { withClientState } from 'apollo-link-state';
+import { ApolloLink } from 'apollo-link';
 import { ApolloProvider } from "react-apollo";
+import { graphql, compose } from 'react-apollo';
+const cache = new InMemoryCache()
+
+const defaultState = {
+  testState: {
+    __typename: 'TestState',
+    test: false
+  }
+}
+
+const stateLink = withClientState({
+  cache,
+  defaults: defaultState
+})
 
 const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql"
+  link: ApolloLink.from([
+    stateLink,
+    new HttpLink({
+      uri: "http://localhost:5000/graphql"
+    })
+  ]),
+  cache
 });
 
 ReactDOM.render(
