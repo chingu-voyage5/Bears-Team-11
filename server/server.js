@@ -1,12 +1,14 @@
 const express = require('express'),
-      morgan = require('morgan');
+      morgan = require('morgan'),
       bodyParser = require('body-parser'),
       mongoose = require('mongoose'),
-      expressSession = require('express-session');
-      MongoStore = require('connect-mongo')(expressSession);
-      passport = require('passport');
+      expressSession = require('express-session'),
+      MongoStore = require('connect-mongo')(expressSession),
+      passport = require('passport'),
+      { graphqlExpress, graphiqlExpress } = require('apollo-server-express'),
       port = process.env.PORT || 5000,
-      app = express();
+      app = express(),
+      schema = require('./graphql/schema');
 
 require('dotenv').config();
 
@@ -36,10 +38,20 @@ app.use(passport.session());
 const authRoutes = require('./routes/auth');
 app.use(authRoutes());
 
+app.use('/graphql',
+  bodyParser.json(),
+  graphqlExpress({ schema })
+);
+
+app.use('/graphiql',
+  graphiqlExpress({ endpointURL: '/graphql' })
+);
+
 app.get('/', (_, res) => {
   res.render('/');
-})
+});
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
+  console.log('Go to http://localhost:5000/graphiql to run queries!');
 })
