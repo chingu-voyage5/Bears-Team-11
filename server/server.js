@@ -4,7 +4,7 @@ const express = require('express'),
     { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
     port = process.env.PORT || 5000,
     app = express(),
-    schema = require('./schema');
+    schema = require('./graphql/schema');
 
 require('dotenv').config();
 
