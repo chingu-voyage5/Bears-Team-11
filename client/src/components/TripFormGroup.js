@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import PlacesAutocomplete from "react-places-autocomplete";
-import { DateRangePicker } from 'react-dates';
+import { DateRangePicker } from "react-dates";
 
-import 'react-dates/lib/css/_datepicker.css';
+import "react-dates/lib/css/_datepicker.css";
 
 // refer to https://github.com/hibiken/react-places-autocomplete
 const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
@@ -13,10 +13,12 @@ const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
         type: "text"
       })}
     />
-    
+
     <div className="autocomplete-dropdown-container">
       {suggestions.map(suggestion => {
-        const className = suggestion.active ? 'has-background-primary' : 'has-background-white';
+        const className = suggestion.active
+          ? "has-background-primary"
+          : "has-background-white";
         return (
           <div {...getSuggestionItemProps(suggestion, { className })}>
             <span>{suggestion.description}</span>
@@ -27,15 +29,19 @@ const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
   </div>
 );
 
-const TripFormGroup = (props) => {
+const placesOnError = (status, clearSuggestions) => {
+  console.error("Google Maps API returned error with status: ", status);
+  clearSuggestions();
+};
+
+const TripFormGroup = props => {
   return (
-    
     <div className="field is-horizontal">
       <div className="field-body">
-
         <PlacesAutocomplete
           value={props.address}
           onChange={address => props.handleAddressChange(props.id, address)}
+          onError={placesOnError}
         >
           {renderFunc}
         </PlacesAutocomplete>
@@ -45,16 +51,19 @@ const TripFormGroup = (props) => {
           startDateId={`startDate ${props.id}`}
           endDate={props.endDate}
           endDateId={`endDate ${props.id}`}
-          onDatesChange={({ startDate, endDate }) => props.handleDateChange(props.id, startDate, endDate)}
+          onDatesChange={({ startDate, endDate }) =>
+            props.handleDateChange(props.id, startDate, endDate)
+          }
           focusedInput={props.focusedDateInput}
-          onFocusChange={focusedDateInput => props.handleDateInputFocusChange(props.id, focusedDateInput)}
+          onFocusChange={focusedDateInput =>
+            props.handleDateInputFocusChange(props.id, focusedDateInput)
+          }
         />
-        
       </div>
-      
+
       <div className="field is-grouped">
         <div className="control">
-          <button 
+          <button
             type="button"
             className="button is-link"
             onClick={props.handleCityAdd}
@@ -63,7 +72,7 @@ const TripFormGroup = (props) => {
           </button>
         </div>
         <div className="control">
-          <button 
+          <button
             type="button"
             className="button is-danger"
             onClick={() => props.handleCityRemove(props.id)}
@@ -73,7 +82,7 @@ const TripFormGroup = (props) => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default TripFormGroup;
