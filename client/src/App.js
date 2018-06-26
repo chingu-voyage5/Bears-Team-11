@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import Apollo from './Apollo';
+import Test from './Test';
 import './styles/css/App.css';
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
       <div>
         <Navbar />
         <Hero />
-        <Apollo />
+        <Test />
       </div>
     );
   }
