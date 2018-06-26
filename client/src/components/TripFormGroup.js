@@ -4,6 +4,7 @@ import { DateRangePicker } from 'react-dates';
 
 import 'react-dates/lib/css/_datepicker.css';
 
+// refer to https://github.com/hibiken/react-places-autocomplete
 const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
   <div className="field">
     <input
@@ -46,7 +47,7 @@ const TripFormGroup = (props) => {
           endDateId={`endDate ${props.id}`}
           onDatesChange={({ startDate, endDate }) => props.handleDateChange(props.id, startDate, endDate)}
           focusedInput={props.focusedDateInput}
-          onFocusChange={focusedInput => props.handleDateInputFocusChange(focusedInput)}
+          onFocusChange={focusedDateInput => props.handleDateInputFocusChange(props.id, focusedDateInput)}
         />
         
       </div>

@@ -9,19 +9,21 @@ const cityMock = {
   id: uuidv1(),
   address: "",
   startDate: null,
-  endDate: null
+  endDate: null,
+  focusedDateInput: null,
 };
 
 class TripForm extends Component {
   constructor(props) {
     super(props);
 
+    // cities is an array with each city having its own unique id
     this.state = {
       cities: [cityMock],
-      focusedDateInput: null
     };
   }
 
+  // handler for PlacesAutocomplete 'onChange'
   handleAddressChange = (id, address) => {
     this.setState(prev => ({
       cities: prev.cities.map(
@@ -30,6 +32,7 @@ class TripForm extends Component {
     }));
   };
 
+  // handler for DateRangePicker 'onDatesChange'
   handleDateChange = (id, startDate, endDate) => {
     this.setState(prev => ({
       cities: prev.cities.map(
@@ -38,11 +41,18 @@ class TripForm extends Component {
     }));
   };
 
-  handleDateInputFocusChange = focusedDateInput => {
-    this.setState({ focusedDateInput });
+  // handler for DateRangePicker 'onFocusChange'
+  handleDateInputFocusChange = (id, focusedDateInput) => {
+    this.setState(prev => ({
+      cities: prev.cities.map(
+        city => (city.id === id ? { ...city, focusedDateInput } : city)
+      )
+    }));
   }
 
+  // handler for add city button
   handleCityAdd = () => {
+    // maximum number of allowed cities - 5
     if (this.state.cities.length > 4)
       return;
 
@@ -51,7 +61,9 @@ class TripForm extends Component {
     }));
   };
 
+  // handler for remove city button
   handleCityRemove = id => {
+    // minimum number for allowed cities - 1
     if (this.state.cities.length < 2)
       return;
     
@@ -72,7 +84,7 @@ class TripForm extends Component {
             startDate={city.startDate}
             endDate={city.endDate}
             handleDateChange={this.handleDateChange}
-            focusedDateInput={this.state.focusedDateInput}
+            focusedDateInput={city.focusedDateInput}
             handleDateInputFocusChange={this.handleDateInputFocusChange}
             handleCityAdd={this.handleCityAdd}
             handleCityRemove={this.handleCityRemove}
