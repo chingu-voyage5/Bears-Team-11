@@ -27,7 +27,7 @@ const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
   </div>
 );
 
-const TripFormGroup = (props) => {
+const TripFormCityGroup = (props) => {
   return (
     
     <div className="field is-horizontal">
@@ -76,4 +76,4 @@ const TripFormGroup = (props) => {
   )
 };
 
-export default TripFormGroup;
+export default TripFormCityGroup;
