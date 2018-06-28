@@ -1,4 +1,5 @@
 const express = require('express'),
+      helmet = require('helmet'),
       morgan = require('morgan'),
       bodyParser = require('body-parser'),
       mongoose = require('mongoose'),
@@ -12,6 +13,7 @@ const express = require('express'),
 
 require('dotenv').config();
 
+app.use(helmet());
 app.use(morgan('dev')); 
 
 mongoose.connect(process.env.MLAB_URI, (err) => {
