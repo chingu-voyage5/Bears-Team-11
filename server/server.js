@@ -19,8 +19,9 @@ mongoose.connect(process.env.MLAB_URI, (err) => {
   console.log('Connected to mLab')
 })
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+app.use(cors())
 
 app.set('trust proxy', 1) // secure cookie but served over http
 app.use(expressSession({
@@ -51,7 +52,15 @@ app.get('/', (_, res) => {
   res.render('/');
 });
 
+app.use('/graphql',
+  bodyParser.json(),
+  graphqlExpress({ schema })
+);
+
+app.use('/graphiql',
+  graphiqlExpress({ endpointURL: '/graphql' })
+);
+
 app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
   console.log('Go to http://localhost:5000/graphiql to run queries!');
 })

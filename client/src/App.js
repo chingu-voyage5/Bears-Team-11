@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import Test from './Test';
 import Footer from './components/Footer';
 import TripForm from './components/TripForm';
 import AuthSuccess from './AuthSuccess';
@@ -16,6 +17,7 @@ class App extends Component {
         <Route path="/success" component={AuthSuccess} />
         <Navbar />
         <Hero />
+        <Test />
         <TripForm />
         <Footer />
       </div>
