@@ -13,16 +13,22 @@ import { ApolloProvider } from "react-apollo";
 import { graphql, compose } from 'react-apollo';
 const cache = new InMemoryCache()
 
-const defaultState = {
-  testState: {
-    __typename: 'TestState',
-    test: false
+const defaults = {
+  rootState: {
+    __typename: 'rootState',
+    locations: [{
+      __typename: 'locations',
+      city: '',
+      start_date: '',
+      end_date: '',
+    }],
+    genres: [],
   }
 }
 
 const stateLink = withClientState({
   cache,
-  defaults: defaultState
+  defaults: defaults
 })
 
 const client = new ApolloClient({

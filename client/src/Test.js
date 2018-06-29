@@ -24,8 +24,8 @@ class Apollo extends Component {
 
 export default compose(
   graphql(testState, {
-    props: ({ data: { testState } }) => ({
-      testState
+    props: ({ data: { rootState } }) => ({
+      rootState
     })
   })
 )(Apollo);

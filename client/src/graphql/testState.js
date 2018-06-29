@@ -2,8 +2,9 @@ import gql from 'graphql-tag';
 
 export default gql`
     query {
-        testState @client {
-            test
+        rootState @client {
+            locations
+            genres
         }
     }
 `
