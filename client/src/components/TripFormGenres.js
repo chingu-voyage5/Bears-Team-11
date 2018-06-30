@@ -1,10 +1,18 @@
-import React from 'react';
+import React from "react";
+import classNames from "classnames";
 
-const TripFormGenres = (props) => (
-  <div className="select is-multiple">
-    <select multiple size="8">
-      {props.genres.map((genre, idx) => <option key={idx} value={genre}>{genre}</option>)}
-    </select>
+const TripFormGenres = props => (
+  <div className="buttons is-centered">
+    {props.genres.map(genre => 
+      <button 
+        key={genre.name}
+        type="button"
+        className={classNames("button", { "is-warning": genre.selected })}
+        onClick={() => props.genreToggle(genre.name)}
+      >
+        {genre.name}
+      </button>
+    )}
   </div>
 );
 
