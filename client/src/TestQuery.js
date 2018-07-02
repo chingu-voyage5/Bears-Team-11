@@ -1,34 +1,38 @@
 import React, { Component } from 'react';
 import { Query, graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
-import testState from './graphql/testquery';
+import testQuery from './graphql/testQuery';
+import testMutation from './graphql/testMutation';
 
-class Apollo extends Component {
+class TestQuery extends Component {
+
   componentDidMount(){
     console.log(this.props)
   }
   render() {
     return (
-        <Query query={graphString}>
-          {({ loading, error, data }) => {
-            if (loading) return <p>Loading...</p>;
-            if (error) return <p>Error :(</p>;
+        // <Query query={graphString}>
+        //   {({ loading, error, data }) => {
+        //     // if (loading) return <p>Loading...</p>;
+        //     // if (error) return <p>Error :(</p>;
 
-            console.log(data)
-            return <div></div>
-          }}
-        </Query>
+        //     // console.log(data)
+        //     return <div></div>
+        //   }}
+        // </Query>
+        <button onClick={e=>this.props.testMutation({variables:{test:true}})}>test</button>
     )
   }
 }
 
 export default compose(
-  graphql(testState, {
+  graphql(testMutation, {name: 'testMutation'}),
+  graphql(testQuery, {
     props: ({ data: { rootState } }) => ({
       rootState
     })
   })
-)(Apollo);
+)(TestQuery);
 
 // test query
 const graphString = gql`{

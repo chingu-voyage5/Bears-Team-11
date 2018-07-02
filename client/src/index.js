@@ -10,9 +10,10 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { withClientState } from 'apollo-link-state';
 import { ApolloLink } from 'apollo-link';
 import { ApolloProvider } from "react-apollo";
+import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
-const cache = new InMemoryCache()
 
+const cache = new InMemoryCache()
 const defaults = {
   rootState: {
     __typename: 'rootState',
@@ -23,12 +24,33 @@ const defaults = {
       end_date: '',
     }],
     genres: [],
+    test: false
   }
 }
 
 const stateLink = withClientState({
   cache,
-  defaults: defaults
+  resolvers: {
+    Mutation: {
+      setTest: (_, { isTrue }, { cache }) => {
+        const query = gql`
+          query {
+              rootState @client {
+                  test
+              }
+          }
+        `
+        const previous = cache.readQuery({query});
+        console.log(previous)
+        const data = {
+          test: isTrue
+        }
+        cache.writeData({ data });
+        return null
+      }
+    }
+  },
+  defaults: defaults,
 })
 
 const client = new ApolloClient({
