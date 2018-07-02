@@ -85,4 +85,8 @@ const TripFormGroup = props => {
   );
 };
 
+<<<<<<< HEAD:client/src/components/TripFormCityGroup.js
+export default TripFormCityGroup;
+=======
 export default TripFormGroup;
+>>>>>>> development:client/src/components/TripFormGroup.js
