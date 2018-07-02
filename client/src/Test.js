@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Query, graphql, compose } from "react-apollo";
 import gql from "graphql-tag";
-import testState from './graphql/testState';
+import testState from './graphql/testquery';
 
 class Apollo extends Component {
   componentDidMount(){
