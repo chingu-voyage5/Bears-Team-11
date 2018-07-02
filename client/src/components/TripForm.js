@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
 
-import TripFormGroup from "./TripFormGroup";
+import TripFormCities from "./TripFormCities";
+import TripFormGenres from "./TripFormGenres";
 
 import "../styles/css/TripForm.css";
 
@@ -10,8 +11,19 @@ const cityMock = {
   address: "",
   startDate: null,
   endDate: null,
-  focusedDateInput: null,
+  focusedDateInput: null
 };
+
+const GENRES = [
+  { name: "Hip-hop", selected: false },
+  { name: "Country", selected: false },
+  { name: "Pop", selected: false },
+  { name: "Rock", selected: false },
+  { name: "Soul", selected: false },
+  { name: "Classical", selected: false },
+  { name: "EDM", selected: false },
+  { name: "Jazz", selected: false }
+];
 
 class TripForm extends Component {
   constructor(props) {
@@ -20,6 +32,7 @@ class TripForm extends Component {
     // cities is an array with each city having its own unique id
     this.state = {
       cities: [cityMock],
+      genres: GENRES
     };
   }
 
@@ -48,48 +61,55 @@ class TripForm extends Component {
         city => (city.id === id ? { ...city, focusedDateInput } : city)
       )
     }));
-  }
+  };
 
-  // handler for add city button
   handleCityAdd = () => {
     // maximum number of allowed cities - 5
-    if (this.state.cities.length > 4)
-      return;
+    if (this.state.cities.length > 4) return;
 
     this.setState(prev => ({
       cities: [...prev.cities, { ...cityMock, id: uuidv1() }]
     }));
   };
 
-  // handler for remove city button
   handleCityRemove = id => {
     // minimum number for allowed cities - 1
-    if (this.state.cities.length < 2)
-      return;
-    
+    if (this.state.cities.length < 2) return;
+
     this.setState(prev => ({
       cities: prev.cities.filter(city => city.id !== id)
     }));
   };
 
+  genreToggle = name => {
+    this.setState(prev => ({
+      genres: prev.genres.map(
+        genre =>
+          genre.name === name ? { ...genre, selected: !genre.selected } : genre
+      )
+    }));
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log("Form has been submitted", this.state);
+  };
+
   render() {
     return (
-      <form className="landing-trip-form">
-        {this.state.cities.map(city => (
-          <TripFormGroup
-            key={city.id}
-            id={city.id}
-            address={city.address}
-            handleAddressChange={this.handleAddressChange}
-            startDate={city.startDate}
-            endDate={city.endDate}
-            handleDateChange={this.handleDateChange}
-            focusedDateInput={city.focusedDateInput}
-            handleDateInputFocusChange={this.handleDateInputFocusChange}
-            handleCityAdd={this.handleCityAdd}
-            handleCityRemove={this.handleCityRemove}
-          />
-        ))}
+      <form className="landing-trip-form" onSubmit={this.handleSubmit}>
+        <TripFormCities
+          cities={this.state.cities}
+          handleAddressChange={this.handleAddressChange}
+          handleDateChange={this.handleDateChange}
+          handleDateInputFocusChange={this.handleDateInputFocusChange}
+          handleCityAdd={this.handleCityAdd}
+          handleCityRemove={this.handleCityRemove}
+        />
+        <TripFormGenres genres={this.state.genres} genreToggle={this.genreToggle} />
+        <div className="control has-text-centered">
+          <button className="button is-success">Submit</button>
+        </div>
       </form>
     );
   }
