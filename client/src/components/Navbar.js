@@ -13,10 +13,10 @@ class Navbar extends Component {
   
   render() {
     return (
-      <div className="navbar" role="navigation" aria-label="main navigation">
+      <div id="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <a className="navbar-item">
-            <img src={logo} alt="Bears Events" width="40" height="40"></img>
+            <img src={logo} alt="Bears Events" width="40" height="60"></img>
             <h3>BEARS·EVENTS</h3>
           </a>
         </div>

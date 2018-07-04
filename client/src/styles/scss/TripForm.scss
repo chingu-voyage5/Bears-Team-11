@@ -1,6 +1,15 @@
 .landing-trip-form {
-  max-width: 800px;
+  // background: blue;
+  max-width: 500px;
   margin: auto;
   position: relative;
-  top: -150px;
+  top: -300px;
+}
+// #addremove {
+//   margin-top: 12px;
+// }
+@media (min-width: 770px){
+  #seperator {
+    margin-top: 12px;
+  }
 }
