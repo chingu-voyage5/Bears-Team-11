@@ -106,7 +106,7 @@ class TripForm extends Component {
           handleCityAdd={this.handleCityAdd}
           handleCityRemove={this.handleCityRemove}
         />
-        <TripFormGenres genres={this.state.genres} genreToggle={this.genreToggle} />
+        {/* <TripFormGenres genres={this.state.genres} genreToggle={this.genreToggle} /> */}
         <div className="control has-text-centered">
           <button className="button is-success">Submit</button>
         </div>
