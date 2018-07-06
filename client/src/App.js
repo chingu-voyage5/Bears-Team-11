@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
 import TripForm from './components/TripForm';
+import Results from './components/Results';
 
 import './styles/css/App.css';
 import 'react-dates/initialize';
@@ -14,6 +15,7 @@ class App extends Component {
         <Navbar />
         <Hero />
         <TripForm />
+        <Results />
         <Footer />
       </div>
     );
