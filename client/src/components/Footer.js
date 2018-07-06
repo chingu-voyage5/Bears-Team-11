@@ -4,7 +4,9 @@ import chingu from '../assets/chingu.png';
 
 const footer = () => {
   return (
-    <footer className="footer">
+    <footer className="footer" style={{
+      paddingBottom: '40px'
+    }}>
       <div className='container is-small'>
         <div className='columns'>
           <div className='column has-text-centered'>
