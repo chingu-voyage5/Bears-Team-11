@@ -1,15 +1,18 @@
 .landing-trip-form {
   background-color: rgb(88, 151, 252);
+  border-radius: 10px;
   padding: 20px;
-  max-width: 550px;
-  padding-bottom: 74px;
+  max-width: 650px;
+  padding-bottom: 15px;
   margin: auto;
   position: relative;
   top: -120px;
     .input.is-primary {
       border: none;
       border-radius: 0px;
-      width: 510px;
+      width: 205px;
+      height: 48px;
+      margin: 0px 5px;
     }
     #submit {
       position: absolute;
@@ -24,12 +27,26 @@
             }
         }
     }
+    #genres {
+      margin-top: 74px;
+      #genre {
+        font-size: 12px;
+        // background: none;
+        // color: white;
+      }
+      #genre:hover {
+        border: 1px solid rgba(0, 0, 255, 0.878);
+      }
+    }
 }
 .autocomplete-dropdown-container {
   z-index: 1;
   position: absolute;
-  width: 100%;
-  padding-right: 40px;
+  width: 210px;
+  // padding-right: 40px;
+  padding-left: 5px;
+  max-height: 70px;
+  overflow-y: scroll;
 }
 @media (min-width: 770px){
   #seperator {

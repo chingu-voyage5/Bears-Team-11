@@ -41,16 +41,16 @@ const TripFormGroup = props => {
         display: 'flex',
         flexDirection: 'column',
       }}>
-        <PlacesAutocomplete
-          value={props.address}
-          onChange={address => props.handleAddressChange(props.id, address)}
-          onError={placesOnError}
-        >
-          {renderFunc}
-        </PlacesAutocomplete>
         <div id="seperator" style={{
           display: 'flex'
         }}>
+          <PlacesAutocomplete
+            value={props.address}
+            onChange={address => props.handleAddressChange(props.id, address)}
+            onError={placesOnError}
+          >
+            {renderFunc}
+          </PlacesAutocomplete>
           <DateRangePicker
             startDate={props.startDate}
             startDateId={`startDate ${props.id}`}
@@ -67,8 +67,8 @@ const TripFormGroup = props => {
           <div className="field is-grouped"
             style={{
               marginTop: '4px',
-              marginLeft: '10px',
-              display:'flex',
+              marginLeft: '16px',
+              display: 'flex',
               justifyContent: 'center'
             }}
           >

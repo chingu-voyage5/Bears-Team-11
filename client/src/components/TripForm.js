@@ -21,7 +21,7 @@ const GENRES = [
   { name: "Rock", selected: false },
   { name: "Soul", selected: false },
   { name: "Classical", selected: false },
-  { name: "EDM", selected: false },
+  { name: "Electronic", selected: false },
   { name: "Jazz", selected: false }
 ];
 
@@ -106,7 +106,7 @@ class TripForm extends Component {
           handleCityAdd={this.handleCityAdd}
           handleCityRemove={this.handleCityRemove}
         />
-        {/* <TripFormGenres genres={this.state.genres} genreToggle={this.genreToggle} /> */}
+        <TripFormGenres genres={this.state.genres} genreToggle={this.genreToggle} />
         <div className="control has-text-centered" id="submit">
           <button className="button is-success">submit
             <i className="fa fa-arrow-right"></i>
