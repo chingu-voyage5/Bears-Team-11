@@ -26,14 +26,14 @@ class CityBox extends Component {
             >
             <div className='columns'>
               <div className='column has-text-centered'>
-                {trip.city}
+                {trip.location}
               </div>
               <div className='column is-1 has-text-centered has-text-danger'>
                 <i className='fa fa-chevron-down'></i>
               </div>
               <div className='column has-text-centered'>
                 <span>
-                {this.handleDateFormat(trip.startDate)} - {this.handleDateFormat(trip.endDate)}
+                {this.handleDateFormat(trip.start_date)} - {this.handleDateFormat(trip.end_date)}
                 </span>  
               </div>
             </div>
