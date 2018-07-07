@@ -1,7 +1,10 @@
-{
+module.exports = {
   "data": {
-    "city": {
+    "city": [
+    {
       "location": "new york",
+      "start_date": "20180706",
+      "end_date": "20180713",
       "totalEvents": "185",
       "events": [
         {
@@ -442,75 +445,15 @@
           "venue_name": "PNC Bank Arts Center",
           "venue_url": "http://newyorkcity.eventful.com/venues/pnc-bank-arts-center-/V0-001-001467766-8?utm_source=apis&utm_medium=apim&utm_campaign=apic",
           "performer": null
-        },
-        {
-          "city": "New York",
-          "date": "2018-07-17 18:30:00",
-          "event_url": "http://newyorkcity.eventful.com/events/-/E0-001-115725860-6?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-          "title": "As Is",
-          "venue_address": "196 Allen Street",
-          "venue_name": "Rockwood Music Hall",
-          "venue_url": "http://newyorkcity.eventful.com/venues/rockwood-music-hall-/V0-001-001015033-0?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-          "performer": {
-            "performer_name": "As Is",
-            "performer_url": "http://concerts.eventful.com/As-Is?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-            "spotify": {
-              "id": "3IXtskFMls8KXRipcIJT9y",
-              "tracks": [
-                {
-                  "name": "The Stigma (Boys Don’t Cry)",
-                  "preview_url": null,
-                  "track_id": "2NilEOJLgJ3YLJ5mhsbFek"
-                },
-                {
-                  "name": "The Wounded World",
-                  "preview_url": null,
-                  "track_id": "3Bx6NBEDCm7Gr61IYEnNXv"
-                },
-                {
-                  "name": "Dial Tones",
-                  "preview_url": null,
-                  "track_id": "64WtHwNC5X0VzGfzA0IES3"
-                },
-                {
-                  "name": "Hey Rachel",
-                  "preview_url": null,
-                  "track_id": "5HkGsynhIVFXHAnm0cRFJo"
-                },
-                {
-                  "name": "Still Remembering",
-                  "preview_url": null,
-                  "track_id": "4Anh0wkOFEunlfqxysO6Hq"
-                },
-                {
-                  "name": "Pretty Little Distance",
-                  "preview_url": null,
-                  "track_id": "0zKaf85DY23dAXYoMfGkYt"
-                },
-                {
-                  "name": "Dial Tones - Acoustic Version",
-                  "preview_url": null,
-                  "track_id": "79hjAXUXQsWzfG6A7Lom1x"
-                },
-                {
-                  "name": "Okay",
-                  "preview_url": null,
-                  "track_id": "1hXHLb7tcoeDFSsh5lkhWp"
-                },
-                {
-                  "name": "No Way Out",
-                  "preview_url": null,
-                  "track_id": "3ITxwkMgJDNMvCmlted8j4"
-                },
-                {
-                  "name": "Patchwork Love",
-                  "preview_url": null,
-                  "track_id": "37ngSr1dW9qbzU9o04UlxE"
-                }
-              ]
-            }
-          }
-        },
+        }
+      ]
+    },
+    {
+      "location": "san francisco",
+      "start_date": "20180715",
+      "end_date": "20180724",
+      "totalEvents": "185",
+      "events": [
         {
           "city": "New York",
           "date": "2018-07-20 19:00:00",
@@ -895,44 +838,10 @@
           "venue_url": "http://newyorkcity.eventful.com/venues/the-cutting-room-/V0-001-006461917-3?utm_source=apis&utm_medium=apim&utm_campaign=apic",
           "performer": null
         },
-        null,
-        {
-          "city": "New York",
-          "date": "2018-07-14 19:00:00",
-          "event_url": "http://newyorkcity.eventful.com/events/johann-/E0-001-110871281-4?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-          "title": "Johann",
-          "venue_address": "158 Ludlow Street",
-          "venue_name": "Pianos",
-          "venue_url": "http://newyorkcity.eventful.com/venues/pianos-/V0-001-000967246-5?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-          "performer": null
-        },
-        {
-          "city": "Holmdel",
-          "date": "2018-07-14 11:00:00",
-          "event_url": "http://newyorkcity.eventful.com/events/vans-warped-tour-2018-/E0-001-111951930-1?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-          "title": "Vans Warped Tour 2018",
-          "venue_address": "Exit 116",
-          "venue_name": "PNC Bank Arts Center",
-          "venue_url": "http://newyorkcity.eventful.com/venues/pnc-bank-arts-center-/V0-001-001467766-8?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-          "performer": {
-            "performer_name": "Vans Warped Tour",
-            "performer_url": "http://concerts.eventful.com/Vans-Warped-Tour?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-            "spotify": null
-          }
-        },
-        null,
-        {
-          "city": "Wantagh",
-          "date": "2018-07-13 21:00:00",
-          "event_url": "http://newyorkcity.eventful.com/events/90s-night-blink182-green-day-tributes-/E0-001-114070651-2?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-          "title": "90's Night with Blink-182 & Green Day Tributes!",
-          "venue_address": "3232 Railroad Avenue",
-          "venue_name": "Mulcahy's Pub and Concert Hall",
-          "venue_url": "http://newyorkcity.eventful.com/venues/mulcahys-pub-and-concert-hall-/V0-001-000779188-1?utm_source=apis&utm_medium=apim&utm_campaign=apic",
-          "performer": null
-        }
+        null
       ]
     }
+  ]
   },
   "errors": [
     {
