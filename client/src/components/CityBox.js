@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import Playlist from './Playlist';
 import "../styles/css/Results.css";
 
 class CityBox extends Component {
@@ -37,9 +38,11 @@ class CityBox extends Component {
                 </span>  
               </div>
             </div>
-            {(this.state.expanded && <div>Hi</div>)}
           </div>
         </div>
+        {(this.state.expanded ?
+          <Playlist trip={trip} />
+        : null)}
       </div> 
     );
   }
