@@ -11,7 +11,8 @@ class Playlist extends Component {
       const trackArtist = event.performer.performer_name;
       const trackTitle = firstTrackResult.name;
       const trackPreviewURL = firstTrackResult.preview_url;
-      return <PlaylistSong artist={trackArtist}  title={trackTitle} previewURL={trackPreviewURL} key={index} index={index}/>
+      const ticketURL = event.event_url;
+      return <PlaylistSong artist={trackArtist} index={index} key={index} previewURL={trackPreviewURL} ticket={ticketURL} title={trackTitle}/>
     }))
 
     return (
