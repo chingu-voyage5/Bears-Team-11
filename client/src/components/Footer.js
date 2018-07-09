@@ -2,10 +2,18 @@ import React from 'react';
 import github from '../assets/github.png';
 import chingu from '../assets/chingu.png';
 
+
 const footer = () => {
+  let height = `${window.innerHeight / 4+25}px`
+  const componentDidMount = () => {
+    window.addEventListener('resize', ()=>{
+      height = `${window.innerHeight / 4+25}px`
+    })
+  }
   return (
     <footer className="footer" style={{
-      paddingBottom: '40px'
+      paddingBottom: '40px',
+      marginTop: height
     }}>
       <div className='container is-small'>
         <div className='columns'>

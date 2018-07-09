@@ -98,6 +98,7 @@ class TripForm extends Component {
   render() {
     return (
       <form className="landing-trip-form" onSubmit={this.handleSubmit}>
+      <TripFormGenres genres={this.state.genres} genreToggle={this.genreToggle} />
         <TripFormCities
           cities={this.state.cities}
           handleAddressChange={this.handleAddressChange}
@@ -106,7 +107,7 @@ class TripForm extends Component {
           handleCityAdd={this.handleCityAdd}
           handleCityRemove={this.handleCityRemove}
         />
-        <TripFormGenres genres={this.state.genres} genreToggle={this.genreToggle} />
+        
         <div className="control has-text-centered" id="submit">
           <button className="button is-success">submit
             <i className="fa fa-arrow-right"></i>
