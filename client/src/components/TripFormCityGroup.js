@@ -67,7 +67,7 @@ const TripFormGroup = props => {
           <div className="field is-grouped"
             style={{
               marginTop: '4px',
-              marginLeft: '16px',
+              marginLeft: '12px',
               display: 'flex',
               justifyContent: 'center'
             }}

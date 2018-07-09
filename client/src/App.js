@@ -10,7 +10,7 @@ import 'react-dates/initialize';
 class App extends Component {
   render() {
     return (
-      <div>
+      <div style={{position: 'relative'}}>
         <Navbar />
         <Hero />
         <TripForm />
