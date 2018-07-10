@@ -8,7 +8,7 @@ import "../styles/css/TripForm.css";
 
 const cityMock = {
   id: uuidv1(),
-  address: "",
+  location: "",
   startDate: null,
   endDate: null,
   focusedDateInput: null
@@ -37,10 +37,10 @@ class TripForm extends Component {
   }
 
   // handler for PlacesAutocomplete 'onChange'
-  handleAddressChange = (id, address) => {
+  handleLocationChange = (id, location) => {
     this.setState(prev => ({
       cities: prev.cities.map(
-        city => (city.id === id ? { ...city, address } : city)
+        city => (city.id === id ? { ...city, location } : city)
       )
     }));
   };
@@ -92,7 +92,14 @@ class TripForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("Form has been submitted", this.state);
+    const genres = this.state.genres
+      .filter(genre => genre.selected)
+      .map(genre => genre.name);
+    
+    this.props.handleFormSubmit(
+      this.state.cities,
+      genres,
+    );
   };
 
   render() {
@@ -100,7 +107,7 @@ class TripForm extends Component {
       <form className="landing-trip-form" onSubmit={this.handleSubmit}>
         <TripFormCities
           cities={this.state.cities}
-          handleAddressChange={this.handleAddressChange}
+          handleLocationChange={this.handleLocationChange}
           handleDateChange={this.handleDateChange}
           handleDateInputFocusChange={this.handleDateInputFocusChange}
           handleCityAdd={this.handleCityAdd}

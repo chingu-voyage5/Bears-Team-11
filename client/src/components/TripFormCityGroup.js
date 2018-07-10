@@ -39,8 +39,8 @@ const TripFormGroup = props => {
     <div className="field is-horizontal">
       <div className="field-body">
         <PlacesAutocomplete
-          value={props.address}
-          onChange={address => props.handleAddressChange(props.id, address)}
+          value={props.location}
+          onChange={location => props.handleLocationChange(props.id, location)}
           onError={placesOnError}
         >
           {renderFunc}
