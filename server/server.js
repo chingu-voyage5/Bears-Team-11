@@ -2,6 +2,7 @@ const express = require('express'),
       helmet = require('helmet'),
       morgan = require('morgan'),
       bodyParser = require('body-parser'),
+      cors = require('cors');
       mongoose = require('mongoose'),
       expressSession = require('express-session'),
       MongoStore = require('connect-mongo')(expressSession),
@@ -14,7 +15,8 @@ const express = require('express'),
 require('dotenv').config();
 
 app.use(helmet());
-app.use(morgan('dev')); 
+app.use(morgan('dev'));
+app.use(cors());
 
 mongoose.connect(process.env.MLAB_URI, (err) => {
   if (err) console.error(err)
