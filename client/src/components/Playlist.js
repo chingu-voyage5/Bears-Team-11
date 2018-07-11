@@ -6,8 +6,7 @@ import '../styles/css/Playlist.css'
 class Playlist extends Component {
 
   render() {
-    const events = this.props.trip.events.filter((e) => e != undefined && e.performer && e.performer.spotify != undefined );
-    const song = events.map(((event, index) => {
+    const song = this.props.trip.map(((event, index) => {
       const firstTrackResult = event.performer.spotify.tracks[0];
       const trackArtist = event.performer.performer_name;
       const trackTitle = firstTrackResult.name;

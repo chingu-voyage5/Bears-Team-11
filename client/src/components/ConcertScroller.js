@@ -10,8 +10,7 @@ class ConcertScroller extends Component {
     }
   }
   render(){
-    const events = this.props.trip.events.filter((e) => e != undefined && e.performer && e.performer.spotify != undefined );
-    const event = events.map(((event, index) => {
+    const event = this.props.trip.map(((event, index) => {
       const eventName = event.title;
       const eventVenue = event.venue_name;
       const eventDate = event.date;

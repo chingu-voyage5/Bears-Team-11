@@ -34,9 +34,10 @@ class CityBox extends Component {
       return <div>Loading...</div>;
 
     // additional available vars - events, totalEvents
-    const { location } = this.props.data.city;
+    console.log('this.props.data :', this.props.data);
+    const { location } = this.props.city;
     const { startDate, endDate } = this.props.city;
-
+    const events = this.props.data.city.events.filter((e) => e != undefined && e.performer && e.performer.spotify != undefined );
     return (
       <div>
         <div className='pad-top pad-bottom'>
@@ -47,8 +48,8 @@ class CityBox extends Component {
             <div className='columns'>
               <div className='column has-text-centered'>
               <i className="fa fa-map-marker-alt" style={{marginRight: '5px', color: '#FF3860'}}></i>
-                {/*{this.upperCaseCity(location)}*/}
-                {location}
+                {this.upperCaseCity(location)}
+                {/* {location} */}
               </div>
               <div className='column is-1 has-text-centered has-text-danger'>
                 <i className='fa fa-chevron-down' style={{color: '#7782E9'}}></i>
@@ -59,15 +60,15 @@ class CityBox extends Component {
                 </span>  
               </div>
             </div>
-            {(this.state.expanded && <div>data successfully loaded</div>)}
+            {/* {(this.state.expanded && <div>data successfully loaded</div>)} */}
           </div>
         </div>
-        {/*(this.state.expanded ?
+        {((this.state.expanded && events.length != 0) ?
         <div>
-          <ConcertScroller trip={trip} />
-          <Playlist trip={trip} />
+          <ConcertScroller trip={events} />
+          <Playlist trip={events} />
         </div>
-        : null)*/}
+        : null)}
       </div> 
     );
   }
