@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { graphql } from 'react-apollo';
 import moment from 'moment';
 import Playlist from './Playlist';
 import ConcertScroller from './ConcertScroller';
+
+import { getCityQuery } from '../graphql/queries';
 import "../styles/css/Results.css";
 
 class CityBox extends Component {
@@ -27,7 +30,12 @@ class CityBox extends Component {
   }
 
   render () {
-    const { trip } = this.props;
+    if (this.props.data.loading)
+      return <div>Loading...</div>;
+
+    // additional available vars - events, totalEvents
+    const { location } = this.props.data.city;
+    const { startDate, endDate } = this.props.city;
 
     return (
       <div>
@@ -39,28 +47,40 @@ class CityBox extends Component {
             <div className='columns'>
               <div className='column has-text-centered'>
               <i className="fa fa-map-marker-alt" style={{marginRight: '5px', color: '#FF3860'}}></i>
-                {this.upperCaseCity(trip.location)}
+                {/*{this.upperCaseCity(location)}*/}
+                {location}
               </div>
               <div className='column is-1 has-text-centered has-text-danger'>
                 <i className='fa fa-chevron-down' style={{color: '#7782E9'}}></i>
               </div>
               <div className='column has-text-centered'>
                 <span>
-                {this.handleDateFormat(trip.start_date)} - {this.handleDateFormat(trip.end_date)}
+                {this.handleDateFormat(startDate)} - {this.handleDateFormat(endDate)}
                 </span>  
               </div>
             </div>
+            {(this.state.expanded && <div>data successfully loaded</div>)}
           </div>
         </div>
-        {(this.state.expanded ?
+        {/*(this.state.expanded ?
         <div>
           <ConcertScroller trip={trip} />
           <Playlist trip={trip} />
         </div>
-        : null)}
+        : null)*/}
       </div> 
     );
   }
 }
 
-export default CityBox;
+// only single genre supported atm, not even sure if it is working as expected
+export default graphql(getCityQuery, {
+  options: ({ city: { location, startDate, endDate }, genre }) => ({
+    variables: {
+      location,
+      genre,
+      start_date: startDate.format("YYYYMMDD"),
+      end_date: endDate.format("YYYYMMDD"),
+    }
+  })
+})(CityBox);

@@ -22,7 +22,7 @@ const resolvers = {
   },
 
   CityType: {
-    // location: data => data.location,
+    location: data => data.location,
     totalEvents: data => data.total_items,
     events: data => data.events.event
   },
