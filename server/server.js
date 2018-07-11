@@ -19,7 +19,7 @@ app.use(morgan('dev'));
 mongoose.connect(process.env.MLAB_URI, (err) => {
   if (err) console.error(err)
   console.log('Connected to mLab')
-})
+}, { useNewUrlParser: true })
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
