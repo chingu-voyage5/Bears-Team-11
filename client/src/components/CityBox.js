@@ -47,7 +47,6 @@ class CityBox extends Component {
             <div className='columns'>
               <div className='column has-text-centered'>
               <i className="fa fa-map-marker-alt" style={{marginRight: '5px', color: '#FF3860'}}></i>
-                {/*{this.upperCaseCity(location)}*/}
                 {location}
               </div>
               <div className='column is-1 has-text-centered has-text-danger'>
@@ -59,21 +58,19 @@ class CityBox extends Component {
                 </span>  
               </div>
             </div>
-            {(this.state.expanded && <div>data successfully loaded</div>)}
           </div>
         </div>
-        {/*(this.state.expanded ?
+        {(this.state.expanded ?
         <div>
-          <ConcertScroller trip={trip} />
-          <Playlist trip={trip} />
+          <ConcertScroller trip={this.props.data.city} />
+          <Playlist trip={this.props.data.city} />
         </div>
-        : null)*/}
+        : null)}
       </div> 
     );
   }
 }
 
-// only single genre supported atm, not even sure if it is working as expected
 export default graphql(getCityQuery, {
   options: ({ city: { location, startDate, endDate }, genre }) => ({
     variables: {
