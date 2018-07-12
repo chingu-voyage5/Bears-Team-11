@@ -94,7 +94,9 @@ class TripForm extends Component {
     e.preventDefault();
     const genres = this.state.genres
       .filter(genre => genre.selected)
-      .map(genre => genre.name);
+      .map(genre => genre.name)
+      .map(genre => 'music_' + genre)
+      .join(',')
     
     this.props.handleFormSubmit(
       this.state.cities,
