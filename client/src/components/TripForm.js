@@ -100,6 +100,7 @@ class TripForm extends Component {
 
     const events = this.state.cities.filter((e) => e != undefined && e.startDate !== null && e.endDate != null && e.location !== "");
     if(events.length !== 0){
+      this.props.toggle(true)
       this.props.handleFormSubmit(
         this.state.cities,
         genres,

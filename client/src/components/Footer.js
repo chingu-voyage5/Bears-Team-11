@@ -13,6 +13,7 @@ const footer = () => {
   return (
     <footer className="footer" style={{
       paddingBottom: '40px',
+      backgroundColor: 'white',
       marginTop: height
     }}>
       <div className='container is-small'>

@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo';
 import moment from 'moment';
 import Playlist from './Playlist';
 import ConcertScroller from './ConcertScroller';
-
+import Overlay from './Overlay';
 import { getCityQuery } from '../graphql/queries';
 import "../styles/css/Results.css";
 
@@ -30,8 +30,10 @@ class CityBox extends Component {
   }
 
   render () {
-    if (this.props.data.loading)
-      return <div>Loading...</div>;
+    if (this.props.data.loading){
+      return <Overlay />;
+    }
+      
 
     // additional available vars - events, totalEvents
     console.log('this.props.data :', this.props.data);

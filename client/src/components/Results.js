@@ -6,16 +6,16 @@ import "../styles/css/Results.css";
 
 const Results = (props) => 
   <section>
-    <div className="hero is-small is-light is-bold">
+    {props.cities.length !== 0 && <div><div className="hero is-small is-light is-bold">
       <div className='hero-body'>
         <h2 className="title has-text-centered"> Your Trip </h2>
       </div>
     </div>
     <div className='container'>
       {props.cities.map(city => 
-        <CityBox key={city.id} city={city} genre={props.genres} />
+        <CityBox key={city.id} city={city} genre={props.genres} toggle={props.toggle}/>
       )}
-    </div>
+    </div></div>}
   </section>
     
 
