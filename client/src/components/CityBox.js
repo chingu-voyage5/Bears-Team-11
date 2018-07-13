@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo';
 import moment from 'moment';
 import Playlist from './Playlist';
 import ConcertScroller from './ConcertScroller';
-import Overlay from './Overlay';
+
 import { getCityQuery } from '../graphql/queries';
 import "../styles/css/Results.css";
 
@@ -31,7 +31,7 @@ class CityBox extends Component {
 
   render () {
     if (this.props.data.loading){
-      return <Overlay />;
+      return <div></div>;
     }
       
 
@@ -40,6 +40,9 @@ class CityBox extends Component {
     const { location } = this.props.city;
     const { startDate, endDate } = this.props.city;
     const events = this.props.data.city.events.filter((e) => e != undefined && e.performer && e.performer.spotify != undefined );
+    if(events.length != 0){
+      this.props.inc()
+    }
     return (
       <div>
         <div className='pad-top pad-bottom'>

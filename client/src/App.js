@@ -32,10 +32,8 @@ class App extends Component {
   toggleOverlay(bool){
     if(bool){
       this.setState({submit: bool})
-      // document.querySelector('#overlay').className = 'animated fadeIn'
     } else {
       this.setState({submit: bool})
-      // document.querySelector('#overlay').className = 'animated fadeOut'
     }
   }
   render() {
@@ -48,11 +46,12 @@ class App extends Component {
             handleFormSubmit={this.handleFormSubmit}
             toggle={this.toggleOverlay.bind(this)}
           />
-          {/* {this.state.submit && <Overlay />} */}
+          {this.state.submit && <Overlay />}
           <Results
             cities={this.state.submittedCities}
             genres={this.state.submittedGenres}
             toggle={this.toggleOverlay.bind(this)}
+            submit={this.state.submit}
           />
           <Footer />
         </div>
