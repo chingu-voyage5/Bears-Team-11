@@ -21,7 +21,7 @@ class App extends Component {
     submittedGenres: [],
   }
 
-  handleFormSubmit = (cities, genres) => {
+  handleFormSubmit = (cities, genres) => {    
     this.setState({ 
       submittedCities: cities,
       submittedGenres: genres

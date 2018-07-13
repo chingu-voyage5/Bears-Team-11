@@ -97,11 +97,14 @@ class TripForm extends Component {
       .map(genre => genre.name)
       .map(genre => 'music_' + genre)
       .join(',')
-    
-    this.props.handleFormSubmit(
-      this.state.cities,
-      genres,
-    );
+
+    const events = this.state.cities.filter((e) => e != undefined && e.startDate !== null && e.endDate != null && e.location !== "");
+    if(events.length !== 0){
+      this.props.handleFormSubmit(
+        this.state.cities,
+        genres,
+      );
+    }
   };
 
   render() {
