@@ -15,14 +15,14 @@ const cityMock = {
 };
 
 const GENRES = [
-  { name: "Hip-hop", selected: false },
-  { name: "Country", selected: false },
-  { name: "Pop", selected: false },
-  { name: "Rock", selected: false },
-  { name: "Soul", selected: false },
-  { name: "Classical", selected: false },
-  { name: "Electronic", selected: false },
-  { name: "Jazz", selected: false }
+  { name: "hip-hop", selected: false },
+  { name: "country", selected: false },
+  { name: "pop", selected: false },
+  { name: "rock", selected: false },
+  { name: "soul", selected: false },
+  { name: "classical", selected: false },
+  { name: "electronic", selected: false },
+  { name: "jazz", selected: false }
 ];
 
 class TripForm extends Component {
@@ -94,7 +94,9 @@ class TripForm extends Component {
     e.preventDefault();
     const genres = this.state.genres
       .filter(genre => genre.selected)
-      .map(genre => genre.name);
+      .map(genre => genre.name)
+      .map(genre => 'music_' + genre)
+      .join(',')
     
     this.props.handleFormSubmit(
       this.state.cities,

@@ -74,7 +74,6 @@ class CityBox extends Component {
   }
 }
 
-// only single genre supported atm, not even sure if it is working as expected
 export default graphql(getCityQuery, {
   options: ({ city: { location, startDate, endDate }, genre }) => ({
     variables: {

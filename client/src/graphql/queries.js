@@ -3,6 +3,7 @@ import { gql } from 'apollo-boost';
 const getCityQuery = gql`
   query($location: String!, $genre: String!, $start_date: String!, $end_date: String!) {
     city(location: $location, genre: $genre, start_date: $start_date, end_date: $end_date) {
+      location
       totalEvents
       events {
         city
