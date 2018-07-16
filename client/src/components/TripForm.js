@@ -17,12 +17,16 @@ const cityMock = {
 const GENRES = [
   { name: "hip-hop", selected: false },
   { name: "country", selected: false },
-  { name: "pop", selected: false },
   { name: "rock", selected: false },
-  { name: "soul", selected: false },
-  { name: "classical", selected: false },
   { name: "electronic", selected: false },
-  { name: "jazz", selected: false }
+  { name: "jazz", selected: false },
+  { name: "classical", selected: false },
+  { name: "latin", selected: false },
+  { name: "metal", selected: false },
+  { name: "folk", selected: false },
+  { name: "pop", selected: false },
+  { name: "r&b", selected: false },
+  { name: "soul", selected: false },
 ];
 
 class TripForm extends Component {

@@ -29,18 +29,21 @@
         }
     }
     #genres {
-      // margin-top: 74px
       margin-bottom: 2px;
-      .is-primary {
-        color: white;
-        border: 1px solid white;
+      display: flex;
+        .outlined {
+          background-color: $primary-1;
+          color: $white;
+            &:hover {
+              background-color: $turquoise;
+            }
       }
       #genre {
+        flex-grow: 1;
+        border: 1px solid $white;
         font-size: 12px;
         margin-left: 5px;
         margin-right: 8.5px;
-        // background: #6923DD;
-        // color: white;
       }
     }
 }
