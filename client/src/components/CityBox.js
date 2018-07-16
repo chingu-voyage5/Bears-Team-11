@@ -11,7 +11,8 @@ class CityBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      expanded: false
+      expanded: false,
+      loaded: false
     }
   }
 
@@ -28,7 +29,16 @@ class CityBox extends Component {
     })
     return location.join(' ')
   }
-
+  componentDidUpdate(){
+    if(this.props.data.loading === false){
+      // console.log(this.props.data)
+      const events = this.props.data.city.events.filter((e) => e != undefined && e.performer && e.performer.spotify != undefined );
+      if(events.length != 0 && this.props.inc != null){
+        this.props.inc();
+      }
+    }
+  }
+  com
   render () {
     if (this.props.data.loading){
       return <div></div>;
@@ -36,13 +46,10 @@ class CityBox extends Component {
       
 
     // additional available vars - events, totalEvents
-    console.log('this.props.data :', this.props.data);
+    // console.log('this.props.data :', this.props.data);
     const { location } = this.props.city;
     const { startDate, endDate } = this.props.city;
     const events = this.props.data.city.events.filter((e) => e != undefined && e.performer && e.performer.spotify != undefined );
-    if(events.length != 0){
-      this.props.inc()
-    }
     return (
       <div>
         <div className='pad-top pad-bottom'>
@@ -69,7 +76,7 @@ class CityBox extends Component {
           </div>
         </div>
         {((this.state.expanded && events.length != 0) ?
-        <div>
+        <div id="result-div">
           <ConcertScroller trip={events} />
           <Playlist trip={events} />
         </div>
