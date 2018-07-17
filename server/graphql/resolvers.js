@@ -13,8 +13,6 @@ spotifyApi.clientCredentialsGrant().then((data) => {
 const resolvers = {
   Query: {
     city: (root, args) => {
-      // for genre - gotta map over all genres and add 'music_' to each
-      // date format (20180616)
       return fetch(`http://api.eventful.com/json/events/search?app_key=${process.env.EVENTFUL_KEY}&categories=${args.genre}&location=${args.location}&date=${args.start_date}00-${args.end_date}00&page_size=25`)
         .then(res => res.json())
         .then(data => Object.assign({}, data, { location: args.location }))
@@ -22,7 +20,7 @@ const resolvers = {
   },
 
   CityType: {
-    // location: data => data.location,
+    location: data => data.location,
     totalEvents: data => data.total_items,
     events: data => data.events.event
   },
