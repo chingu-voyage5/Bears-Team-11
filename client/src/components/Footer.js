@@ -2,9 +2,9 @@ import React from 'react';
 import github from '../assets/github.png';
 import chingu from '../assets/chingu.png';
 
-
 const footer = () => {
   let height = `${window.innerHeight / 4+25}px`
+  // Not firing
   const componentDidMount = () => {
     window.addEventListener('resize', ()=>{
       height = `${window.innerHeight / 4+25}px`

@@ -3,13 +3,6 @@ import moment from 'moment';
 import '../styles/css/Event.css'
 
 class ScrollerEvent extends Component {
-  constructor(){
-    super()
-    this.state = {
-
-    }
-  }
-
   render(){
     const { name } = this.props;
     const { venue } = this.props;
@@ -31,4 +24,4 @@ class ScrollerEvent extends Component {
   }
 }
 
-export default ScrollerEvent
+export default ScrollerEvent;

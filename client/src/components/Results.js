@@ -1,8 +1,7 @@
 import React from 'react';
-
 import CityBox from './CityBox';
+
 import "../styles/css/Results.css";
-// import Mock from '../lib/resultMock.js';
 
 const Results = (props) => 
   <section>

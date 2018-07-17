@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Sound from 'react-sound';
 import '../styles/css/Song.css'
 
-
 class PlaylistSong extends Component {
   constructor(props) {
     super(props);
@@ -35,9 +34,6 @@ class PlaylistSong extends Component {
         <Sound
           url={previewURL}
           playStatus={this.state.playStatus}
-          onError={(errorCode, description)=>{
-            console.log(description)
-          }}
         />
       );
       player = (
