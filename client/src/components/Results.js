@@ -41,8 +41,6 @@ class Results extends Component {
       </section>
     )
   }
-}
-  
-    
+} 
 
 export default Results;
