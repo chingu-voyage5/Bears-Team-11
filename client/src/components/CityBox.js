@@ -63,22 +63,20 @@ class CityBox extends Component {
             {/* {(this.state.expanded && <div>data successfully loaded</div>)} */}
           </div>
         </div>
-        {((this.state.expanded && events.length != 0) ?
         <div>
           <ConcertScroller trip={events} />
           <Playlist trip={events} />
         </div>
-        : null)}
       </div> 
     );
   }
 }
 
 export default graphql(getCityQuery, {
-  options: ({ city: { location, startDate, endDate }, genre }) => ({
+  options: ({ city: { location, startDate, endDate }, genres }) => ({
     variables: {
       location,
-      genre,
+      genres,
       start_date: startDate.format("YYYYMMDD"),
       end_date: endDate.format("YYYYMMDD"),
     }

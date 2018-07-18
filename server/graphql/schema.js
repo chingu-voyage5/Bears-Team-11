@@ -3,7 +3,7 @@ const resolvers = require('./resolvers');
 
 const typeDefs = `
   type Query {
-    city (location: String!, genre: String, start_date: String!, end_date: String!): CityType
+    city (location: String!, genres: String, start_date: String!, end_date: String!): CityType
   }
 
   type CityType {
