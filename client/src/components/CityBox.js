@@ -54,7 +54,7 @@ class CityBox extends Component {
         </div>
         <div>
           <ConcertScroller events={events} />
-          <Playlist trip={events} />
+          <Playlist events={events} />
         </div>
 
       </div> 

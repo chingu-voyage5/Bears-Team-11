@@ -10,7 +10,7 @@ class PlaylistSong extends Component {
     }
   };
 
-  playButton() {
+  playSong() {
     const status = this.state.playStatus;
     if (status !== Sound.status.PLAYING) {
       this.setState({ playStatus: Sound.status.PLAYING });
@@ -19,12 +19,12 @@ class PlaylistSong extends Component {
     }
   };
 
-  stopButton() {
+  stopSong() {
     this.setState({ playStatus: Sound.status.STOPPED });
   };
 
   render() {
-    const { artist, index, previewURL, ticket, title } = this.props;
+    const { artist, index, previewURL, ticketUrl, title } = this.props;
     let sound;
 
     let player = <div className='is-size-7 has-text-danger'>Sorry, No Preview</div>
@@ -38,12 +38,12 @@ class PlaylistSong extends Component {
       );
       player = (
         <div>
-          <span onClick={() => this.playButton()}>
+          <button onClick={() => this.playSong()}>
             <i className='far fa-play-circle icon'></i>
-          </span>
-          <span onClick={() => this.stopButton()}>
+          </button>
+          <button onClick={() => this.stopSong()}>
             <i className='far fa-stop-circle icon'></i>
-          </span>
+          </button>
         </div>
       )
     }
@@ -57,7 +57,7 @@ class PlaylistSong extends Component {
           <div className='column is-4'>{title}</div>
           <div className='column is-2 has-text-centered'>{player}</div>
           <div className='column is-size-7 ticket'>
-            <a href={ticket} target='_blank'>Tickets</a>
+            <a href={ticketUrl} target='_blank'>Tickets</a>
           </div>
         </div>
       </div>
