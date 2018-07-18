@@ -13,7 +13,7 @@ spotifyApi.clientCredentialsGrant().then((data) => {
 const resolvers = {
   Query: {
     city: (root, args) => {
-      return fetch(`http://api.eventful.com/json/events/search?app_key=${process.env.EVENTFUL_KEY}&categories=${args.genre}&location=${args.location}&date=${args.start_date}00-${args.end_date}00&page_size=25`)
+      return fetch(`http://api.eventful.com/json/events/search?app_key=${process.env.EVENTFUL_KEY}&categories=${args.genres}&location=${args.location}&date=${args.start_date}00-${args.end_date}00&page_size=25`)
         .then(res => res.json())
         .then(data => Object.assign({}, data, { location: args.location }))
     }

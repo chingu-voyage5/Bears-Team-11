@@ -96,19 +96,18 @@ class TripForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    // genres is expected to be a String of form "music_soul,music_pop"
     const genres = this.state.genres
       .filter(genre => genre.selected)
-      .map(genre => genre.name)
-      .map(genre => 'music_' + genre)
-      .join(',')
+      .map(genre => 'music_' + genre.name)
+      .join(',');
 
-    const events = this.state.cities.filter((e) => e != undefined && e.startDate !== null && e.endDate != null && e.location !== "");
-    if(events.length !== 0){
-      this.props.handleFormSubmit(
-        this.state.cities,
-        genres,
-      );
-    }
+    this.props.handleFormSubmit(
+      this.state.cities,
+      genres,
+    );
+    
   };
 
   render() {

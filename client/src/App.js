@@ -18,7 +18,7 @@ const client = new ApolloClient({
 class App extends Component {
   state = {
     submittedCities: [],
-    submittedGenres: [],
+    submittedGenres: '',
   }
 
   handleFormSubmit = (cities, genres) => {    

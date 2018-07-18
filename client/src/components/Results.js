@@ -12,7 +12,7 @@ const Results = (props) =>
     </div>
     <div className='container'>
       {props.cities.map(city => 
-        <CityBox key={city.id} city={city} genre={props.genres} />
+        <CityBox key={city.id} city={city} genres={props.genres} />
       )}
     </div>
   </section>
