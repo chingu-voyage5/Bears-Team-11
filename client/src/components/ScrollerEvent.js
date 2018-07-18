@@ -8,7 +8,7 @@ class ScrollerEvent extends Component {
     const { title, venue, date, url } = this.props;
 
     return(
-    <div className="box is-marginless" id="concert">
+    <li className="box is-marginless" id="concert">
       <div className='columns'>
           <div className='column is-4 has-text-centered'>{title}</div>
           <div className='column is-4 has-text-centered'>{venue}</div>
@@ -17,7 +17,7 @@ class ScrollerEvent extends Component {
             <a href={url} target='_blank'>Event Link</a>
           </div>
       </div>
-    </div>
+    </li>
     )
   }
 }
