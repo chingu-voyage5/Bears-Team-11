@@ -9,7 +9,7 @@ class Results extends Component {
   }
 
   expandCity = (cityId) => {
-    console.log(cityId);
+    // currently not toggling off, to be fixed
     if (cityId === this.state.expandedCity) {
       this.setState({ expandedCity: '' })
     }
