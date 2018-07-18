@@ -21,7 +21,6 @@ const CityBox = ({ city: { location, startDate, endDate }, genres, id, expandCit
     }}
   >
     {({ loading, error, data }) => {
-      console.log(loading, error, data);
       let events = [];
       if (!loading && !error) {
         events = data.city.events.filter(event => event.performer && event.performer.spotify);
@@ -31,8 +30,8 @@ const CityBox = ({ city: { location, startDate, endDate }, genres, id, expandCit
         'is-loading': loading
       });
 
-      const spanClass = classNames('icon', { 'has-text-warning': error, 'has-text-info': !loading && data.city });
-      const iconClass = classNames('fas', {'fa-times': error, 'fa-chevron-down': data.city });
+      const spanClass = classNames('icon', { 'has-text-danger': error, 'has-text-info': !error && data.city });
+      const iconClass = classNames('fas', {'fa-times': error, 'fa-chevron-down': !error && data.city });
 
       return ( 
         <div>
@@ -50,7 +49,7 @@ const CityBox = ({ city: { location, startDate, endDate }, genres, id, expandCit
                   onClick={() => expandCity(id)}
                   disabled={loading || error}
                 >
-                  <span className={spanClass}>
+                  <span className={spanClass} style={{ pointerEvents: 'none' }}>
                     <i className={iconClass}></i>
                   </span>
                 </button>
