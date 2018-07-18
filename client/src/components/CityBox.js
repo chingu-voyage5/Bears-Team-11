@@ -27,7 +27,7 @@ class CityBox extends Component {
     console.log('this.props.data :', this.props.data);
     const { location } = this.props.city;
     const { startDate, endDate } = this.props.city;
-    const events = this.props.data.city.events.filter((e) => e != undefined && e.performer && e.performer.spotify != undefined );
+    const events = this.props.data.city.events.filter((e) => e !== undefined && e.performer && e.performer.spotify !== undefined );
     return (
       <div>
         <div className='pad-top pad-bottom'>
