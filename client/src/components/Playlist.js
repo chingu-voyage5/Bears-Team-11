@@ -11,6 +11,9 @@ class Playlist extends Component {
         const { performer: { spotify, performer_name: artist }, eventUrl } = event
   
         const selectedTrack = spotify.tracks[0];
+        if (!selectedTrack)
+          return null;
+        
         const { name: title, preview_url: previewUrl } = selectedTrack;
   
         return <PlaylistSong key={index} index={index} artist={artist}  previewURL={previewUrl} eventUrl={eventUrl} title={title}/>
