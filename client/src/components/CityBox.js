@@ -18,16 +18,6 @@ class CityBox extends Component {
   handleDateFormat(date) {
     return moment(date).format('ll');
   }
-  upperCaseCity(city){
-    let location = city;
-    location = location.split(' ');
-    location.forEach((e, i)=>{
-      let temp = e.split('');
-      temp[0] = temp[0].toUpperCase()
-      location[i] = temp.join('')
-    })
-    return location.join(' ')
-  }
 
   render () {
     if (this.props.data.loading)
@@ -48,8 +38,7 @@ class CityBox extends Component {
             <div className='columns'>
               <div className='column has-text-centered'>
               <i className="fa fa-map-marker-alt" style={{marginRight: '5px', color: '#FF3860'}}></i>
-                {this.upperCaseCity(location)}
-                {/* {location} */}
+                {location}
               </div>
               <div className='column is-1 has-text-centered has-text-danger'>
                 <i className='fa fa-chevron-down' style={{color: '#7782E9'}}></i>
@@ -67,6 +56,7 @@ class CityBox extends Component {
           <ConcertScroller trip={events} />
           <Playlist trip={events} />
         </div>
+
       </div> 
     );
   }
