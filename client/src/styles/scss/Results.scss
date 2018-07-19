@@ -9,3 +9,14 @@
 .min-height{
   min-height: 800px;
 }
+
+.animationDelay {
+  -webkit-animation-delay: .6s;
+  -moz-animation-delay: .6s;
+  -ms-transition-animation-delay: .6s;
+}
+
+.fa-music {
+  padding-left: 10px;
+  padding-right: 10px;
+}
