@@ -12,6 +12,7 @@ class Results extends Component {
     // currently not toggling off, to be fixed
     if (cityId === this.state.expandedCity) {
       this.setState({ expandedCity: '' })
+      return false;
     }
 
     this.setState({ expandedCity: cityId })

@@ -32,15 +32,22 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <div style={{position: 'relative'}}>
-          <Navbar />
-          <Hero />
-          <TripForm
-            handleFormSubmit={this.handleFormSubmit}
-          />
-          <Results
-            cities={this.state.submittedCities}
-            genres={this.state.submittedGenres}
-          />
+        <Navbar />
+        { (this.state.submittedCities.length === 0) ?
+          (
+            <div>
+              <Hero />
+              <TripForm
+                handleFormSubmit={this.handleFormSubmit}
+              />
+            </div>
+          ) : (
+            <Results
+              cities={this.state.submittedCities}
+              genres={this.state.submittedGenres}
+            />
+          )
+        }
           <Footer />
         </div>
       </ApolloProvider>
