@@ -6,15 +6,19 @@ import '../styles/css/Playlist.css'
 class Playlist extends Component {
 
   render() {
-    const events = this.props.trip.events.filter((e) => e != undefined && e.performer && e.performer.spotify != undefined );
-    const song = events.map(((event, index) => {
-      const firstTrackResult = event.performer.spotify.tracks[0];
-      const trackArtist = event.performer.performer_name;
-      const trackTitle = firstTrackResult.name;
-      const trackPreviewURL = firstTrackResult.preview_url;
-      const ticketURL = event.event_url;
-      return <PlaylistSong artist={trackArtist} index={index} key={index} previewURL={trackPreviewURL} ticket={ticketURL} title={trackTitle}/>
-    }))
+    const displayPlaylistSongs = () => {
+      return this.props.events.map(((event, index) => {
+        const { performer: { spotify, performer_name: artist }, eventUrl } = event
+  
+        const selectedTrack = spotify.tracks[0];
+        if (!selectedTrack)
+          return null;
+        
+        const { name: title, preview_url: previewUrl } = selectedTrack;
+  
+        return <PlaylistSong key={index} index={index} artist={artist}  previewURL={previewUrl} eventUrl={eventUrl} title={title}/>
+      }));
+    }
 
     return (
       <div className="container is-paddingless">
@@ -38,7 +42,7 @@ class Playlist extends Component {
               </button>
             </div>
           </div>
-          {song}
+          {displayPlaylistSongs()}
         </div>
       </div>
     )

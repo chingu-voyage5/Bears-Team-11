@@ -11,6 +11,7 @@ const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
         className: "input is-primary",
         type: "text",
         id: 'cityInput',
+        placeholder: 'Where are you going?',
       })}
     />
 
@@ -29,6 +30,10 @@ const renderFunc = ({ getInputProps, getSuggestionItemProps, suggestions }) => (
   </div>
 );
 
+const searchOptions = {
+  types: ['(cities)']
+}
+
 const placesOnError = (status, clearSuggestions) => {
   console.error("Google Maps API returned error with status: ", status);
   clearSuggestions();
@@ -45,9 +50,11 @@ const TripFormGroup = props => {
           display: 'flex'
         }}>
           <PlacesAutocomplete
-            value={props.address}
-            onChange={address => props.handleAddressChange(props.id, address)}
+            value={props.location}
+            onChange={location => props.handleLocationChange(props.id, location)}
             onError={placesOnError}
+            searchOptions={searchOptions}
+            highlightFirstSuggestion
           >
             {renderFunc}
           </PlacesAutocomplete>

@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import CityBox from './CityBox';
-import "../styles/css/Results.css";
-import Mock from '../lib/resultMock.js';
 
-const renderTrips = Mock.data.city.map(locations => (
-  <CityBox trip={locations} key={locations.location} />
-));
+import "../styles/css/Results.css";
 
 class Results extends Component {
+  state = {
+    expandedCity: ''
+  }
+
+  expandCity = (cityId) => {
+    // currently not toggling off, to be fixed
+    if (cityId === this.state.expandedCity) {
+      this.setState({ expandedCity: '' })
+    }
+
+    this.setState({ expandedCity: cityId })
+  }
+    
+
   render() {
     return (
       <section>
@@ -17,11 +27,20 @@ class Results extends Component {
           </div>
         </div>
         <div className='container'>
-          {renderTrips}
+          {this.props.cities.map(city => 
+            <CityBox 
+              key={city.id}
+              id={city.id}
+              city={city}
+              genres={this.props.genres}
+              expandCity={this.expandCity}
+              expanded={city.id === this.state.expandedCity}
+            />
+          )}
         </div>
       </section>
     )
   }
-}
+} 
 
 export default Results;

@@ -7,8 +7,8 @@ const TripFormCities = (props) => (
     <TripFormCityGroup
       key={city.id}
       id={city.id}
-      address={city.address}
-      handleAddressChange={props.handleAddressChange}
+      location={city.location}
+      handleLocationChange={props.handleLocationChange}
       startDate={city.startDate}
       endDate={city.endDate}
       handleDateChange={props.handleDateChange}

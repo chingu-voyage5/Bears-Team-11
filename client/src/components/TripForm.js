@@ -8,21 +8,25 @@ import "../styles/css/TripForm.css";
 
 const cityMock = {
   id: uuidv1(),
-  address: "",
+  location: "",
   startDate: null,
   endDate: null,
   focusedDateInput: null
 };
 
 const GENRES = [
-  { name: "Hip-hop", selected: false },
-  { name: "Country", selected: false },
-  { name: "Pop", selected: false },
-  { name: "Rock", selected: false },
-  { name: "Soul", selected: false },
-  { name: "Classical", selected: false },
-  { name: "Electronic", selected: false },
-  { name: "Jazz", selected: false }
+  { name: "hip-hop", selected: false },
+  { name: "country", selected: false },
+  { name: "rock", selected: false },
+  { name: "electronic", selected: false },
+  { name: "jazz", selected: false },
+  { name: "classical", selected: false },
+  { name: "latin", selected: false },
+  { name: "metal", selected: false },
+  { name: "folk", selected: false },
+  { name: "pop", selected: false },
+  { name: "r&b", selected: false },
+  { name: "soul", selected: false },
 ];
 
 class TripForm extends Component {
@@ -37,10 +41,10 @@ class TripForm extends Component {
   }
 
   // handler for PlacesAutocomplete 'onChange'
-  handleAddressChange = (id, address) => {
+  handleLocationChange = (id, location) => {
     this.setState(prev => ({
       cities: prev.cities.map(
-        city => (city.id === id ? { ...city, address } : city)
+        city => (city.id === id ? { ...city, location } : city)
       )
     }));
   };
@@ -92,7 +96,18 @@ class TripForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log("Form has been submitted", this.state);
+
+    // genres is expected to be a String of form "music_soul,music_pop"
+    const genres = this.state.genres
+      .filter(genre => genre.selected)
+      .map(genre => 'music_' + genre.name)
+      .join(',');
+
+    this.props.handleFormSubmit(
+      this.state.cities,
+      genres,
+    );
+    
   };
 
   render() {
@@ -101,7 +116,7 @@ class TripForm extends Component {
       <TripFormGenres genres={this.state.genres} genreToggle={this.genreToggle} />
         <TripFormCities
           cities={this.state.cities}
-          handleAddressChange={this.handleAddressChange}
+          handleLocationChange={this.handleLocationChange}
           handleDateChange={this.handleDateChange}
           handleDateInputFocusChange={this.handleDateInputFocusChange}
           handleCityAdd={this.handleCityAdd}
