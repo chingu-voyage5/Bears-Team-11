@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CityBox from './CityBox';
 
 import "../styles/css/Results.css";
@@ -39,11 +40,11 @@ class Results extends Component {
           )}
         </div>
         {/* make button with router + style */}
-        <a href='/'>
-          <span class="fas fa-music"></span>
+        <Link to='/'>
+          <span className="fas fa-music"></span>
           Find More Music
-          <span class="fas fa-music"></span>
-        </a>
+          <span className="fas fa-music"></span>
+        </Link>
       </section>
     )
   }
