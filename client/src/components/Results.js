@@ -38,12 +38,6 @@ class Results extends Component {
             />
           )}
         </div>
-        {/* make button with router + style */}
-        <a href='/'>
-          <span class="fas fa-music"></span>
-          Find More Music
-          <span class="fas fa-music"></span>
-        </a>
       </section>
     )
   }

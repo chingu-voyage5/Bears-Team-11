@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
 import TripForm from './components/TripForm';
 import Results from './components/Results';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
+import FindMore from './components/FindMore';
 
 import './styles/css/App.css';
 import 'react-dates/initialize';
@@ -42,10 +44,13 @@ class App extends Component {
               />
             </div>
           ) : (
-            <Results
-              cities={this.state.submittedCities}
-              genres={this.state.submittedGenres}
-            />
+            <div>
+              <Results
+                cities={this.state.submittedCities}
+                genres={this.state.submittedGenres}
+              />
+              <FindMore />
+            </div>
           )
         }
           <Footer />
