@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PlaylistSong from './PlaylistSong';
+import PlaylistSave from './PlaylistSave';
 import { OAuthLogin } from '../utils/Oauth';
 import '../styles/css/Playlist.css'
 
@@ -44,6 +45,7 @@ class Playlist extends Component {
           </div>
           {displayPlaylistSongs()}
         </div>
+        <PlaylistSave />
       </div>
     )
   }

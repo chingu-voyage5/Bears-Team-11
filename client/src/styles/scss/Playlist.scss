@@ -1,4 +1,12 @@
+@import 'index.scss';
+
 div#playlist {
   background-color: #7782E9;
   color: white;
-}
+};
+
+.radio input {
+  @media screen and (max-width: $tablet) {
+    margin-right: 1em;
+  }
+};
