@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Footer from './components/Footer';
-import TripForm from './components/TripForm';
-import Results from './components/Results';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import Footer from './components/Footer';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import Results from './components/Results';
 
 import './styles/css/App.css';
 import 'react-dates/initialize';
@@ -19,38 +19,32 @@ class App extends Component {
   state = {
     submittedCities: [],
     submittedGenres: '',
+    toResults: false
   }
 
   handleFormSubmit = (cities, genres) => {    
     this.setState({ 
       submittedCities: cities,
-      submittedGenres: genres
+      submittedGenres: genres,
+      toResults: true
     });
   };
 
   render() {
     return (
-      <ApolloProvider client={client}>
-        <div style={{position: 'relative'}}>
-        <Navbar />
-        { (this.state.submittedCities.length === 0) ?
-          (
-            <div>
-              <Hero />
-              <TripForm
-                handleFormSubmit={this.handleFormSubmit}
-              />
-            </div>
-          ) : (
-            <Results
-              cities={this.state.submittedCities}
-              genres={this.state.submittedGenres}
-            />
-          )
-        }
-          <Footer />
-        </div>
-      </ApolloProvider>
+      <BrowserRouter>
+        <ApolloProvider client={client}>
+          <div style={{position: 'relative'}}>
+            <Navbar />
+            <Switch>
+              <Route exact path='/' component={() => <Home handleFormSubmit={this.handleFormSubmit} toResults={this.state.toResults}/>}/>
+              <Route path='/results' component={() => <Results cities={this.state.submittedCities} genres={this.state.submittedGenres}/>}/>
+              <Redirect from='*' to='/' />
+            </Switch>
+            <Footer />
+          </div>
+        </ApolloProvider>
+      </BrowserRouter>
     );
   }
 }
