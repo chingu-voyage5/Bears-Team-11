@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo';
+
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Footer from './components/Footer';
 import TripForm from './components/TripForm';
 import Results from './components/Results';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
+import FindMore from './components/FindMore';
 
 import './styles/css/App.css';
 import 'react-dates/initialize';
@@ -32,15 +34,25 @@ class App extends Component {
     return (
       <ApolloProvider client={client}>
         <div style={{position: 'relative'}}>
-          <Navbar />
-          <Hero />
-          <TripForm
-            handleFormSubmit={this.handleFormSubmit}
-          />
-          <Results
-            cities={this.state.submittedCities}
-            genres={this.state.submittedGenres}
-          />
+        <Navbar />
+        { (this.state.submittedCities.length === 0) ?
+          (
+            <div>
+              <Hero />
+              <TripForm
+                handleFormSubmit={this.handleFormSubmit}
+              />
+            </div>
+          ) : (
+            <div>
+              <Results
+                cities={this.state.submittedCities}
+                genres={this.state.submittedGenres}
+              />
+              <FindMore />
+            </div>
+          )
+        }
           <Footer />
         </div>
       </ApolloProvider>

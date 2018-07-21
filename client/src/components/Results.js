@@ -9,9 +9,9 @@ class Results extends Component {
   }
 
   expandCity = (cityId) => {
-    // currently not toggling off, to be fixed
     if (cityId === this.state.expandedCity) {
       this.setState({ expandedCity: '' })
+      return false;
     }
 
     this.setState({ expandedCity: cityId })
@@ -20,13 +20,13 @@ class Results extends Component {
 
   render() {
     return (
-      <section>
+      <section className='animated fadeIn'>
         <div className="hero is-small is-light is-bold">
           <div className='hero-body'>
             <h2 className="title has-text-centered"> Your Trip </h2>
           </div>
         </div>
-        <div className='container'>
+        <div className='container animationDelay animated fadeIn'>
           {this.props.cities.map(city => 
             <CityBox 
               key={city.id}

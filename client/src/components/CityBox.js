@@ -31,14 +31,14 @@ const CityBox = ({ city: { location, startDate, endDate }, genres, id, expandCit
       });
 
       const spanClass = classNames('icon', { 'has-text-danger': error, 'has-text-info': !error && data.city });
-      const iconClass = classNames('fas', {'fa-times': error, 'fa-chevron-down': !error && data.city });
+      const iconClass = expanded ?
+        (classNames('fas', {'fa-times': error, 'fa-chevron-up': !error && data.city })) :
+        (classNames('fas', {'fa-times': error, 'fa-chevron-down': !error && data.city }));
 
       return ( 
         <div>
           <div className='pad-top pad-bottom'>
-            <div 
-              className='box'
-              >
+            <div className='box'>
               <div className='columns'>
                 <div className='column has-text-centered'>
                 <i className="fa fa-map-marker-alt" style={{marginRight: '5px', color: '#FF3860'}}></i>
@@ -63,7 +63,8 @@ const CityBox = ({ city: { location, startDate, endDate }, genres, id, expandCit
           </div>
           {
             expanded && data &&
-            <div>
+            // fix fadeOut false flag
+            <div className={expanded ? 'animated fadeIn' : 'animated fadeOut'}>
               <ConcertScroller events={events} />
               <Playlist events={events} />
             </div>
