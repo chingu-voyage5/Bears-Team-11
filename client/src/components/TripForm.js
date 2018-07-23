@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
+import moment from 'moment';
 
 import TripFormCities from "./TripFormCities";
 import TripFormGenres from "./TripFormGenres";
@@ -14,7 +15,7 @@ const cityMock = {
   focusedDateInput: null
 };
 
-const GENRES = [
+let GENRES = [
   { name: "hip-hop", selected: false },
   { name: "country", selected: false },
   { name: "rock", selected: false },
@@ -38,6 +39,67 @@ class TripForm extends Component {
       cities: [cityMock],
       genres: GENRES
     };
+  }
+  
+  componentDidMount() {
+    this.hydrateState();
+
+    // save to localStorage if leave/refresh
+    window.addEventListener(
+      'beforeunload',
+      this.setLocalStorage.bind(this)
+    );
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener(
+      'beforeunload',
+      this.setLocalStorage.bind(this)
+    );
+
+    // save to localStorage if form submitted
+    this.setLocalStorage();
+  }
+
+  setLocalStorage = () => {
+    const genres = this.state.genres
+      .filter(genre => genre.selected);
+
+    localStorage.setItem('genres', JSON.stringify(genres)); 
+    localStorage.setItem('cities', JSON.stringify(this.state.cities));
+  }
+
+  hydrateState = () => {
+    for (let key in this.state) {
+      if(localStorage.hasOwnProperty(key)) {
+        let value = localStorage.getItem(key)
+        try {
+          value = JSON.parse(value);
+          if (key === 'cities') {
+            value = value.map(cityKey => {
+              return {
+                ...cityKey,
+                startDate: moment(cityKey.startDate, 'YYYYMMDD'),
+                endDate: moment(cityKey.endDate, 'YYYYMMDD')
+              }
+            })
+          }
+          if (key === 'genres') {
+            value = GENRES.map(genre => {
+              let updatedGenre = value.find(selectedGenre => selectedGenre.name === genre.name);
+              return updatedGenre ? {...genre, ...updatedGenre } : genre
+            });
+            }
+            
+          this.setState({ [key]: value})
+        } catch (error) {
+          this.setState({ 
+            cities: [cityMock],
+            genres: GENRES
+          })
+        }
+      }
+    }
   }
 
   // handler for PlacesAutocomplete 'onChange'
@@ -102,12 +164,11 @@ class TripForm extends Component {
       .filter(genre => genre.selected)
       .map(genre => 'music_' + genre.name)
       .join(',');
-
+    
     this.props.handleFormSubmit(
       this.state.cities,
       genres,
     );
-    
   };
 
   render() {
