@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SavePlaylist from './SavePlaylist';
 
 class PlaylistSave extends Component {
   constructor(props) {
@@ -13,13 +14,18 @@ class PlaylistSave extends Component {
   }
 
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value})
+    this.setState({ [event.target.name]: event.target.value })
   }
 
   handleSubmit(event) {
     event.preventDefault();
   }
 
+  savePlaylistToSpotify() {
+    let test = this.props.playlistIds()
+    console.log(test)
+    return test
+  }
   render() {
     return (
       <div className='container box is-radiusless'>
@@ -28,7 +34,7 @@ class PlaylistSave extends Component {
             <div className='column'> Playlist Name
               <div className='field columns'>
                 <div className='control column is-6 is-offset-3'>
-                  <input className='input is-rounded is-small is-success has-text-centered has-margin-top-lg' type='text' name='playlistName' value={this.state.playlistName} onChange={this.handleChange}/>
+                  <input className='input is-rounded is-small is-success has-text-centered has-margin-top-lg' type='text' name='playlistName' value={this.state.playlistName} onChange={this.handleChange} />
                 </div>
               </div>
             </div>
@@ -50,12 +56,12 @@ class PlaylistSave extends Component {
                 <div className='column is-3 is-offset-1'>
                   <label className='radio column has-text-centered'>
                     <input
-                    className='has-margin-bottom-md'
-                    type='radio'
-                    name='status'
-                    value='Private'
-                    checked={this.state.status === 'Private'}
-                    onChange={this.handleChange}
+                      className='has-margin-bottom-md'
+                      type='radio'
+                      name='status'
+                      value='Private'
+                      checked={this.state.status === 'Private'}
+                      onChange={this.handleChange}
                     />
                     Private
                   </label>
@@ -63,16 +69,26 @@ class PlaylistSave extends Component {
               </div>
             </div>
             <div className='column'>
-              <button type='submit' className='has-margin-bottom-md'>Save on Spotify</button>
-                <div className='is-size-7 has-text-centered has-text-grey-light'>
-                  You will connect with you Spotify account to save your playlist. 
-                  The playlist will be reproduced on Spotify. We are not a streaming service.
+              <button type='submit' className='has-margin-bottom-md' onClick={() => {
+                this.savePlaylistToSpotify()
+              }}>Save on Spotify</button>
+              <div className='is-size-7 has-text-centered has-text-grey-light'>
+                You will connect with you Spotify account to save your playlist.
+                The playlist will be reproduced on Spotify. We are not a streaming service.
                 </div>
+              <SavePlaylist playlist={{
+                playlist: {
+                  playlistName: this.state.playlistName,
+                  playlistStatus: this.state.playlistStatus,
+                  idArray: this.savePlaylistToSpotify(),
+                  token: 'blerh'
+                }
+              }} />
             </div>
           </form>
         </div>
       </div>
-        
+
     )
   }
 };

@@ -53,7 +53,16 @@ const resolvers = {
     track_id: tracks => tracks.id
   },
 
+  SavePlaylist: {
+    playlist: (root, args) => {
+      console.log(root)
+      return Object.assign({}, data, { root: root, args: args })
+    }
+  },
 
+  SuccessType: {
+    success: () => {return true}
+  }
 };
 
 module.exports = resolvers;
