@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import uuidv1 from "uuid/v1";
+import { withRouter } from 'react-router-dom';
 
 import TripFormCities from "./TripFormCities";
 import TripFormGenres from "./TripFormGenres";
@@ -107,7 +108,8 @@ class TripForm extends Component {
       this.state.cities,
       genres,
     );
-    
+
+    this.props.history.push('/results');
   };
 
   render() {
@@ -133,4 +135,4 @@ class TripForm extends Component {
   }
 }
 
-export default TripForm;
+export default withRouter(TripForm);

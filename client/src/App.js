@@ -19,14 +19,12 @@ class App extends Component {
   state = {
     submittedCities: [],
     submittedGenres: '',
-    toResults: false
   }
 
   handleFormSubmit = (cities, genres) => {    
     this.setState({ 
       submittedCities: cities,
       submittedGenres: genres,
-      toResults: true
     });
   };
 
@@ -37,7 +35,7 @@ class App extends Component {
           <div style={{position: 'relative'}}>
             <Navbar />
             <Switch>
-              <Route exact path='/' component={() => <Home handleFormSubmit={this.handleFormSubmit} toResults={this.state.toResults}/>}/>
+              <Route exact path='/' component={() => <Home handleFormSubmit={this.handleFormSubmit}/>}/>
               <Route path='/results' component={() => <Results cities={this.state.submittedCities} genres={this.state.submittedGenres}/>}/>
               <Redirect from='*' to='/' />
             </Switch>
