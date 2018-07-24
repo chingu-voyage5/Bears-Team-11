@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
-
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
 import Footer from './components/Footer';
-import TripForm from './components/TripForm';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
 import Results from './components/Results';
-import FindMore from './components/FindMore';
 
 import './styles/css/App.css';
 import 'react-dates/initialize';
@@ -26,36 +24,25 @@ class App extends Component {
   handleFormSubmit = (cities, genres) => {    
     this.setState({ 
       submittedCities: cities,
-      submittedGenres: genres
+      submittedGenres: genres,
     });
   };
 
   render() {
     return (
-      <ApolloProvider client={client}>
-        <div style={{position: 'relative'}}>
-        <Navbar />
-        { (this.state.submittedCities.length === 0) ?
-          (
-            <div>
-              <Hero />
-              <TripForm
-                handleFormSubmit={this.handleFormSubmit}
-              />
-            </div>
-          ) : (
-            <div>
-              <Results
-                cities={this.state.submittedCities}
-                genres={this.state.submittedGenres}
-              />
-              <FindMore />
-            </div>
-          )
-        }
-          <Footer />
-        </div>
-      </ApolloProvider>
+      <BrowserRouter>
+        <ApolloProvider client={client}>
+          <div style={{position: 'relative'}}>
+            <Navbar />
+            <Switch>
+              <Route exact path='/' component={() => <Home handleFormSubmit={this.handleFormSubmit}/>}/>
+              <Route path='/results' component={() => <Results cities={this.state.submittedCities} genres={this.state.submittedGenres}/>}/>
+              <Redirect from='*' to='/' />
+            </Switch>
+            <Footer />
+          </div>
+        </ApolloProvider>
+      </BrowserRouter>
     );
   }
 }

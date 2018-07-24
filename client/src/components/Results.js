@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CityBox from './CityBox';
+import FindMore from './FindMore';
 
 import "../styles/css/Results.css";
 
@@ -38,6 +39,7 @@ class Results extends Component {
             />
           )}
         </div>
+        <FindMore />
       </section>
     )
   }
