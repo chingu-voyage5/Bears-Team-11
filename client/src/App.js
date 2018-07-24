@@ -20,7 +20,7 @@ class App extends Component {
   state = {
     submit: false,
     submittedCities: [],
-    submittedGenres: [],
+    submittedGenres: '',
   }
 
   handleFormSubmit = (cities, genres) => {    

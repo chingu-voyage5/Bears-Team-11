@@ -1,1 +1,25 @@
+@charset 'utf-8';
+
+// Main Primary color */
+$primary-0: #2C3DDE;
+$primary-1: #7782E9;
+$primary-2: #505EE2;
+$primary-3: #0F22D8;
+$primary-4: #0C199A;
+
+// Main Secondary color (1) */
+$secondary-1-0: #6923DD;
+$secondary-1-1: #9E71E8;
+$secondary-1-2: #8248E2;
+$secondary-1-3: #580AD7;
+$secondary-1-4: #3E0898;
+
+// Main Secondary color (2) */
+$secondary-2-0: #1A95D8;
+$secondary-2-1: #6ABAE4;
+$secondary-2-2: #40A6DD;
+$secondary-2-3: #058AD1;
+$secondary-2-4: #045D8D;
+
 @import 'node_modules/bulma/bulma.sass';
+@import 'Spacing.scss';

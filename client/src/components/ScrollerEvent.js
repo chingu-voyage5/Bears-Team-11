@@ -1,32 +1,25 @@
 import React, {Component} from 'react';
+import moment from 'moment';
+
 import '../styles/css/Event.css'
 
 class ScrollerEvent extends Component {
-  constructor(){
-    super()
-    this.state = {
-
-    }
-  }
   render(){
-    const { name } = this.props;
-    const { venue } = this.props;
-    const { date } = this.props;
-    const { link } = this.props;
+    const { title, venue, date, url } = this.props;
 
     return(
-    <div className="box is-marginless" id="concert">
+    <li className="box is-marginless" id="concert">
       <div className='columns'>
-          <div className='column has-text-centered is-4'>{name}</div>
+          <div className='column is-4 has-text-centered'>{title}</div>
           <div className='column is-4 has-text-centered'>{venue}</div>
-          <div className='column is-1'>{date}</div>
+          <div className='column is-2 has-text-centered'>{moment(date).format('MMMM Do, h:mm a')}</div>
           <div className='column is-size-7 has-text-centered'>
-            <a href={link} target='_blank'>Event Link</a>
+            <a href={url} target='_blank'>Event Link</a>
           </div>
       </div>
-    </div>
+    </li>
     )
   }
 }
 
-export default ScrollerEvent
+export default ScrollerEvent;

@@ -17,12 +17,16 @@ const cityMock = {
 const GENRES = [
   { name: "hip-hop", selected: false },
   { name: "country", selected: false },
-  { name: "pop", selected: false },
   { name: "rock", selected: false },
-  { name: "soul", selected: false },
-  { name: "classical", selected: false },
   { name: "electronic", selected: false },
-  { name: "jazz", selected: false }
+  { name: "jazz", selected: false },
+  { name: "classical", selected: false },
+  { name: "latin", selected: false },
+  { name: "metal", selected: false },
+  { name: "folk", selected: false },
+  { name: "pop", selected: false },
+  { name: "r&b", selected: false },
+  { name: "soul", selected: false },
 ];
 
 class TripForm extends Component {
@@ -92,20 +96,18 @@ class TripForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+
+    // genres is expected to be a String of form "music_soul,music_pop"
     const genres = this.state.genres
       .filter(genre => genre.selected)
-      .map(genre => genre.name)
-      .map(genre => 'music_' + genre)
-      .join(',')
+      .map(genre => 'music_' + genre.name)
+      .join(',');
 
-    const events = this.state.cities.filter((e) => e != undefined && e.startDate !== null && e.endDate != null && e.location !== "");
-    if(events.length !== 0){
-      this.props.toggle(true)
-      this.props.handleFormSubmit(
-        this.state.cities,
-        genres,
-      );
-    }
+    this.props.handleFormSubmit(
+      this.state.cities,
+      genres,
+    );
+    
   };
 
   render() {
@@ -120,7 +122,6 @@ class TripForm extends Component {
           handleCityAdd={this.handleCityAdd}
           handleCityRemove={this.handleCityRemove}
         />
-        
         <div className="control has-text-centered" id="submit">
           <button className="button is-success">submit
             <i className="fa fa-arrow-right"></i>

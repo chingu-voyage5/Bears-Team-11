@@ -3,42 +3,22 @@ import ScrollerEvent from './ScrollerEvent';
 import '../styles/css/ConcertScoller.css'
 
 class ConcertScroller extends Component {
-  constructor(){
-    super()
-    this.state = {
-
-    }
-  }
   render(){
-    const event = this.props.trip.map(((event, index) => {
-      const eventName = event.title;
-      const eventVenue = event.venue_name;
-      const eventDate = event.date;
-      const eventLink = event.event_url;
-      return <ScrollerEvent name={eventName} index={index} key={index} venue={eventVenue} date={eventDate} link={eventLink}/>
-    }))
+    const renderScrollerItems = () => {
+      return this.props.events.map(((event, index) => {
+        const { title, venue_name: venue, date, event_url: url} = event;
+        return <ScrollerEvent key={index} title={title} venue={venue} date={date} url={url}/>
+      }));
+    }
+
     return(
       <div className="container is-marginless">
-        <div className="box" id="scroller">
-          {/* <div className="columns">
-            <div className="column is-4 has-text-centered">
-              Event
-            </div>
-            <div className="column is-1 has-text-centered">
-              Venue
-            </div>
-            <div className="column is-1 has-text-centered">
-              Date
-            </div>
-            <div className="column is-1 has-text-centered">
-              URL
-            </div>
-          </div> */}
-          {event}
-        </div>
+        <ul className="box" id="scroller">
+          {renderScrollerItems()}
+        </ul>
       </div>
     )
   }
 }
 
-export default ConcertScroller
+export default ConcertScroller;
