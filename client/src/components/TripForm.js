@@ -80,8 +80,8 @@ class TripForm extends Component {
             value = value.map(cityKey => {
               return {
                 ...cityKey,
-                startDate: moment(cityKey.startDate, 'YYYYMMDD'),
-                endDate: moment(cityKey.endDate, 'YYYYMMDD')
+                startDate: cityKey.startDate ? moment(cityKey.startDate, 'YYYYMMDD') : null,
+                endDate: cityKey.endDate ? moment(cityKey.endDate, 'YYYYMMDD') : null
               }
             })
           }
