@@ -112,6 +112,13 @@ class TripForm extends Component {
     this.props.history.push('/results');
   };
 
+  isDisabled = () => {
+    const selectedGenres = this.state.genres.filter(genre => genre.selected);
+    const selectedCities = this.state.cities.filter(city => city.location && city.startDate && city.endDate);
+    if (!selectedGenres.length) return true;
+    if (selectedCities.length !== this.state.cities.length) return true;
+  }
+
   render() {
     return (
       <form className="landing-trip-form" onSubmit={this.handleSubmit}>
@@ -126,7 +133,7 @@ class TripForm extends Component {
         />
         
         <div className="control has-text-centered" id="submit">
-          <button className="button is-success">submit
+          <button className="button is-success" disabled={this.isDisabled()}>submit
             <i className="fa fa-arrow-right"></i>
           </button>
         </div>

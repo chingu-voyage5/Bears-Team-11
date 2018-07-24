@@ -39,12 +39,6 @@ class Results extends Component {
             />
           )}
         </div>
-        {/* make button with router + style */}
-        <Link to='/'>
-          <span className="fas fa-music"></span>
-          Find More Music
-          <span className="fas fa-music"></span>
-        </Link>
       </section>
     )
   }
