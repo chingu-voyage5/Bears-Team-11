@@ -1,5 +1,5 @@
 const router = require('express').Router();
-      scope = ['user-read-private', 'user-read-email'],
+      scope = ['user-read-private', 'user-read-email', 'playlist-modify-private', 'playlist-modify-public'],
       passport = require('passport');
 
 require('../lib/passport')(passport);
