@@ -31,8 +31,8 @@ const getCityQuery = gql`
 `;
 
 const saveSpotifyPlaylist = gql`
-  query($playlistName: String!, $playlistStatus: String!, $idArray: [String]!, $token: String!) {
-    playlist(playlistName: $playlistName, playlistStatus: $playlistStatus, idArray: $idArray, token: $token) {
+  query($playlistName: String!, $playlistStatus: String!, $idArray: [String]!) {
+    playlist(playlistName: $playlistName, playlistStatus: $playlistStatus, idArray: $idArray) {
       success
     }
   }

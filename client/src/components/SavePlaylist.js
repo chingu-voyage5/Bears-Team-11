@@ -2,14 +2,13 @@ import React from 'react';
 import { Query } from 'react-apollo';
 import { saveSpotifyPlaylist } from '../graphql/queries';
 
-const SavePlaylist = ({playlist: {playlistName, playlistStatus, idArray, token}}) => (
+const SavePlaylist = ({ playlistName, playlistStatus, idArray }) => (
   <Query 
     query={saveSpotifyPlaylist} 
     variables={{
       playlistName,
       playlistStatus,
       idArray,
-      token
     }}
   >
   {({ loading, error, data }) => {

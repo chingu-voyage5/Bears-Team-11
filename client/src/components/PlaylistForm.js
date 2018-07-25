@@ -80,11 +80,13 @@ class PlaylistSave extends Component {
                 You will connect with you Spotify account to save your playlist.
                 The playlist will be reproduced on Spotify. We are not a streaming service.
               </div>
-              {this.state.toggleSave && <SavePlaylist
-                playlistName={this.state.playlistName}
-                playlistStatus={this.state.status}
-                idArray={this.props.playlistIds()}
-              />}
+              {this.state.toggleSave && 
+                <SavePlaylist
+                  playlistName={this.state.playlistName}
+                  playlistStatus={this.state.status}
+                  idArray={this.props.playlistIds()}
+                />
+              }
             </div>
           </form>
         </div>

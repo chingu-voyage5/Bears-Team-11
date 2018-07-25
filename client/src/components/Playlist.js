@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PlaylistSong from './PlaylistSong';
-import PlaylistSave from './PlaylistSave';
+import PlaylistForm from './PlaylistForm';
 import { OAuthLogin } from '../utils/Oauth';
 import '../styles/css/Playlist.css'
 
@@ -21,7 +21,7 @@ class Playlist extends Component {
     }
     const returnSongIds = () => {
       return this.props.events.map(((event, index) => {
-        const { performer: { spotify, performer_name: artist }, eventUrl } = event
+        const { performer: { spotify }} = event
 
         const selectedTrack = spotify.tracks[0];
         if (!selectedTrack)
@@ -54,7 +54,7 @@ class Playlist extends Component {
           </div>
           {displayPlaylistSongs()}
         </div>
-        <PlaylistSave playlistIds={returnSongIds.bind(this)}/>
+        <PlaylistForm playlistIds={returnSongIds.bind(this)}/>
       </div>
     )
   }
