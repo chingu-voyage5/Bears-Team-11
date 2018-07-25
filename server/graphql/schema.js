@@ -4,6 +4,7 @@ const resolvers = require('./resolvers');
 const typeDefs = `
   type Query {
     city (location: String!, genres: String, start_date: String!, end_date: String!): CityType
+    playlist(playlistName: String!, playlistStatus: String! ,idArray: [String]!): SuccessType
   }
 
   type CityType {
@@ -38,10 +39,6 @@ const typeDefs = `
     name: String
     preview_url: String
     track_id: String
-  }
-
-  type SavePlaylist {
-    playlist(playlistName: String!, playlistStatus: String! ,idArray: [String]!, token: String!): SuccessType
   }
 
   type SuccessType {

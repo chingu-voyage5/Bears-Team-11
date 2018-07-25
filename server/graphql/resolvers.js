@@ -10,12 +10,37 @@ spotifyApi.clientCredentialsGrant().then((data) => {
   spotifyApi.setAccessToken(data.body['access_token']);
 });
 
+// const spotifyApi = new SpotifyWebApi();
+// spotifyApi.setAccessToken('')
+
 const resolvers = {
   Query: {
-    city: (root, args) => {
+    city: (_, args) => {
       return fetch(`http://api.eventful.com/json/events/search?app_key=${process.env.EVENTFUL_KEY}&categories=${args.genres}&location=${args.location}&date=${args.start_date}00-${args.end_date}00&page_size=25`)
         .then(res => res.json())
         .then(data => Object.assign({}, data, { location: args.location }))
+    },
+
+    playlist: (_, args) => {
+
+      // Create a private playlist
+      // return spotifyApi.createPlaylist('marshallshea', 'bears playlist', { 'public' : false })
+      // .then(function(data) {
+      //   console.log('Created playlist!');
+      // }, function(err) {
+      //   console.log('Something went wrong!', err);
+      // });
+
+      // Add tracks to a playlist
+      // spotifyApi.addTracksToPlaylist('thelinmichael', '5ieJqeLJjjI8iJWaxeBLuK', ["spotify:track:4iV5W9uYEdYUVa79Axb7Rh", "spotify:track:1301WleyT98MSxVHPZCA6M"])
+      // .then(function(data) {
+      //   console.log('Added tracks to playlist!');
+      // }, function(err) {
+      //   console.log('Something went wrong!', err);
+      // });
+
+      
+      // return Object.assign({}, { root: root, args: args })
     }
   },
 
@@ -51,13 +76,6 @@ const resolvers = {
     name: tracks => tracks.name,
     preview_url: tracks => tracks.preview_url,
     track_id: tracks => tracks.id
-  },
-
-  SavePlaylist: {
-    playlist: (root, args) => {
-      console.log(root)
-      return Object.assign({}, data, { root: root, args: args })
-    }
   },
 
   SuccessType: {
