@@ -6,7 +6,8 @@ class PlaylistSave extends Component {
     super(props);
     this.state = {
       playlistName: '',
-      status: 'Public'
+      status: 'Public',
+      toggleSave: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,11 +22,10 @@ class PlaylistSave extends Component {
     event.preventDefault();
   }
 
-  savePlaylistToSpotify() {
-    let test = this.props.playlistIds()
-    console.log(test)
-    return test
+  toggleSaveQuery(bool){
+    this.setState({toggleSave: bool})
   }
+  
   render() {
     return (
       <div className='container box is-radiusless'>
@@ -69,21 +69,22 @@ class PlaylistSave extends Component {
               </div>
             </div>
             <div className='column'>
-              <button type='submit' className='has-margin-bottom-md' onClick={() => {
-                this.savePlaylistToSpotify()
-              }}>Save on Spotify</button>
+              <button 
+                type='submit' 
+                className='has-margin-bottom-md' 
+                onClick={() => {this.toggleSaveQuery(true)}}
+              >
+                Save on Spotify
+              </button>
               <div className='is-size-7 has-text-centered has-text-grey-light'>
                 You will connect with you Spotify account to save your playlist.
                 The playlist will be reproduced on Spotify. We are not a streaming service.
-                </div>
-              <SavePlaylist playlist={{
-                playlist: {
-                  playlistName: this.state.playlistName,
-                  playlistStatus: this.state.playlistStatus,
-                  idArray: this.savePlaylistToSpotify(),
-                  token: 'blerh'
-                }
-              }} />
+              </div>
+              {this.state.toggleSave && <SavePlaylist
+                playlistName={this.state.playlistName}
+                playlistStatus={this.state.status}
+                idArray={this.props.playlistIds()}
+              />}
             </div>
           </form>
         </div>
