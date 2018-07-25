@@ -193,7 +193,6 @@ class TripForm extends Component {
           handleCityAdd={this.handleCityAdd}
           handleCityRemove={this.handleCityRemove}
         />
-        
         <div className="control has-text-centered" id="submit">
           <button className="button is-success" disabled={this.isDisabled()}>submit
             <i className="fa fa-arrow-right"></i>

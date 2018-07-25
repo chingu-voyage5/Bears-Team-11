@@ -39,6 +39,14 @@ const typeDefs = `
     preview_url: String
     track_id: String
   }
+
+  type SavePlaylist {
+    playlist(playlistName: String!, playlistStatus: String! ,idArray: [String]!, token: String!): SuccessType
+  }
+
+  type SuccessType {
+    success: Boolean
+  }
 `;
 
 module.exports = makeExecutableSchema({ typeDefs, resolvers });

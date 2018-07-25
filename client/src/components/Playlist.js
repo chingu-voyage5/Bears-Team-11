@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
 import PlaylistSong from './PlaylistSong';
+import PlaylistSave from './PlaylistSave';
 import { OAuthLogin } from '../utils/Oauth';
 import '../styles/css/Playlist.css'
 
 class Playlist extends Component {
-
   render() {
     const displayPlaylistSongs = () => {
       return this.props.events.map(((event, index) => {
         const { performer: { spotify, performer_name: artist }, eventUrl } = event
-  
+
         const selectedTrack = spotify.tracks[0];
         if (!selectedTrack)
           return null;
-        
+
         const { name: title, preview_url: previewUrl } = selectedTrack;
-  
-        return <PlaylistSong key={index} index={index} artist={artist}  previewURL={previewUrl} eventUrl={eventUrl} title={title}/>
+
+        return <PlaylistSong key={index} index={index} artist={artist} previewURL={previewUrl} eventUrl={eventUrl} title={title} />
       }));
     }
+    const returnSongIds = () => {
+      return this.props.events.map(((event, index) => {
+        const { performer: { spotify, performer_name: artist }, eventUrl } = event
 
+        const selectedTrack = spotify.tracks[0];
+        if (!selectedTrack)
+          return null;
+
+        return selectedTrack.track_id
+      }));
+    }
     return (
       <div className="container is-paddingless">
         <div className="box" id="playlist">
@@ -44,6 +54,7 @@ class Playlist extends Component {
           </div>
           {displayPlaylistSongs()}
         </div>
+        <PlaylistSave playlistIds={returnSongIds.bind(this)}/>
       </div>
     )
   }

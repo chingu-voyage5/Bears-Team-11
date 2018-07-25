@@ -27,7 +27,7 @@ class App extends Component {
       submittedGenres: genres,
     });
   };
-
+  
   render() {
     return (
       <BrowserRouter>
